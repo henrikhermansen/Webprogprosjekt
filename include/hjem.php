@@ -1,5 +1,5 @@
-<h2>Velkommen til vÃ¥r nettbutikk!</h2>
+<h2>Velkommen til vår nettbutikk!</h2>
 
 <p>Dette er startsiden.</p>
 
-<p>Her stÃ¥r det litt tekst.</p>
+<p>Her står det litt tekst.</p>

@@ -7,14 +7,14 @@ require_once"_classes.php";
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="stylesheet" type="text/css" href="nettbutikk.css" title="Standard css" />
 <title>Nettbutikk</title>
 </head>
 <body>
 
 <div id="header">
-	<h1>Nettbutikken vÃ¥r</h1>
+	<h1>Nettbutikken vår</h1>
 </div>
 
 <div id="v_meny">
