@@ -6,7 +6,18 @@ $gjennomIndex=true;
 $side=str_replace("/","",$_REQUEST['side']);
 $denied_includes=array("","blabla"); // Sider som ikke skal kunne vises som andre sider
 
+$dbinfo=array("84.209.111.93","webprosjekt","web123","web_prosjekt","3306");
+
+require_once"_functions.php";
 require_once"_classes.php";
+
+$db=new sql($dbinfo);
+if($db->connect_error)
+	echo"nei";
+else
+	echo"ja";
+
+$db->close();
 ?>
 <!DOCTYPE HTML>
 <html>
