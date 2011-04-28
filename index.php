@@ -1,4 +1,8 @@
-<?
+<?php
+session_start();
+
+$gjennomIndex=true;
+
 $side=str_replace("/","",$_REQUEST['side']);
 $denied_includes=array("","blabla"); // Sider som ikke skal kunne vises som andre sider
 
@@ -37,7 +41,7 @@ require_once"_classes.php";
 </div>
 
 <div id="innhold">
-	<?
+	<?php
 	if(is_file("include/".$side.".php") && !array_search($side,$denied_includes))
 		include "include/".$side.".php";
 	else
