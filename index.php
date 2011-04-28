@@ -1,21 +1,21 @@
 <?php
 session_start();
 
+date_default_timezone_set('Europe/Oslo');
 $gjennomIndex=true;
 
 $side=str_replace("/","",$_REQUEST['side']);
-$denied_includes=array("","blabla"); // Sider som ikke skal kunne vises som andre sider
+$denied_includes=array("","side_handlekurv"); // Sider som ikke skal kunne vises som andre sider
 
 require_once"_functions.php";
 require_once"_classes.php";
 
+// Dette er kun en test for å vise prinsippet med klassen sql.
 $db=new sql();
 if($db->connect_error)
-	echo"nei";
-else
-	echo"ja";
-
+	echo"Tilkoblingen feilet bla bla";
 $db->close();
+// Test END
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -42,10 +42,10 @@ $db->close();
 	</ul>
 	<hr/>
 	<ul>
-		<li><a href="?side=logginn">Logg inn</a></li>
-		<li><a href="?side=nykunde">Ny kunde</a></li>
-		<li><a href="?side=kontakt">Kontakt oss</a></li>
-		<li><a href="?side=admlogginn">Administrator</a></li>
+		<li><a href="index.php?side=logginn">Logg inn</a></li>
+		<li><a href="index.php?side=nykunde">Ny kunde</a></li>
+		<li><a href="index.php?side=kontakt">Kontakt oss</a></li>
+		<li><a href="index.php?side=admlogginn">Administrator</a></li>
 	</ul>
 </div>
 
