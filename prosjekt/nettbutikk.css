@@ -1,0 +1,39 @@
+/* 
+    Document   : nettbutikk
+    Created on : 26.apr.2011, 11:51:35
+    Author     : Eier
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body {
+    background: #ffffff;
+}
+
+#header{
+    text-align: center;
+    background: #ff0000;
+}
+
+#v_meny{
+    background: #ff0000;
+    width: 15em;
+    float: left;
+}
+
+#r_meny{
+    background: #ff0000;
+    width: 15em;
+    float: right;
+}
+
+#innhold{
+    background: #ffffff;
+    width: auto;
+    float: left;
+    padding: 1em;
+}

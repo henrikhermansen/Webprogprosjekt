@@ -1,0 +1,1 @@
+<h2>Registrer ny kunde:</h2>
