@@ -28,18 +28,19 @@ $db->close();
 <body>
 
 <div id="header">
-	<h1>Nettbutikken vår</h1>
+	<h1>Nettbutikken vï¿½r</h1>
 </div>
 
 <div id="v_meny">
 	<h3>Kategorier:</h3>
 	<ul>
-		<li><a href="#">Alle kategorier</a></li>
-		<li><a href="#">Kategori 1</a></li>
-		<li><a href="#">Kategori 2</a></li>
-		<li><a href="#">Kategori 3</a></li>
-		<li><a href="#">Kategori 4</a></li>
-		<li><a href="#">Kategori 5</a></li>
+		<li><a href="index.php?side=varer&amp;kat=1">Speilreflekskamera</a></li>
+		<li><a href="index.php?side=varer&amp;kat=2">Superzoomkamera</a></li>
+		<li><a href="index.php?side=varer&amp;kat=3">Kompaktkamera</a></li>
+		<li><a href="index.php?side=varer&amp;kat=4">Undervannskamerae</a></li>
+		<li><a href="index.php?side=varer&amp;kat=5">Objektiv</a></li>
+                <li><a href="index.php?side=varer&amp;kat=6">TilbehÃ¸r</a></li>
+		<li><a href="index.php?side=varer&amp;kat=0">Alle kategorier</a></li>
 	</ul>
 	<hr/>
 	<ul>
