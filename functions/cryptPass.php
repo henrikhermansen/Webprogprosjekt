@@ -4,7 +4,7 @@
 
 function cryptPass($passord,$salt)
 {
-	return crypt(md5($passord),md5($salt));
+	return hash("sha512",hash("md5",$salt).hash("md5",$passord));
 }
 
 ?>
