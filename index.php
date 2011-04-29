@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 date_default_timezone_set('Europe/Oslo');
@@ -20,25 +21,26 @@ $db->close();
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="stylesheet" type="text/css" href="nettbutikk.css" title="Standard css" />
 <title>Nettbutikk</title>
 </head>
 <body>
 
 <div id="header">
-	<h1>Nettbutikken vår</h1>
+	<h1>Nettbutikken v�r</h1>
 </div>
 
 <div id="v_meny">
 	<h3>Kategorier:</h3>
 	<ul>
-		<li><a href="#">Alle kategorier</a></li>
-		<li><a href="#">Kategori 1</a></li>
-		<li><a href="#">Kategori 2</a></li>
-		<li><a href="#">Kategori 3</a></li>
-		<li><a href="#">Kategori 4</a></li>
-		<li><a href="#">Kategori 5</a></li>
+		<li><a href="index.php?side=varer&amp;kat=1">Speilreflekskamera</a></li>
+		<li><a href="index.php?side=varer&amp;kat=2">Superzoomkamera</a></li>
+		<li><a href="index.php?side=varer&amp;kat=3">Kompaktkamera</a></li>
+		<li><a href="index.php?side=varer&amp;kat=4">Undervannskamerae</a></li>
+		<li><a href="index.php?side=varer&amp;kat=5">Objektiv</a></li>
+                <li><a href="index.php?side=varer&amp;kat=6">Tilbehør</a></li>
+		<li><a href="index.php?side=varer&amp;kat=0">Alle kategorier</a></li>
 	</ul>
 	<hr/>
 	<ul>

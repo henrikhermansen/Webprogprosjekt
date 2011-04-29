@@ -7,7 +7,7 @@
 </p>
 <p>
 	<label for="passord">Passord</label>
-	<input type="password" name="brukernavn" id="brukernavn" maxlength="100" require>
+	<input type="password" name="brukernavn" id="passord" maxlength="100" require>
 </p>
 <p>
 	<input type="submit" name="logginn" id="logginn" value="Logg inn">
