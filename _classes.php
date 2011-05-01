@@ -1,4 +1,4 @@
-<?
+<?php
 
 require_once"classes/admin.php";
 require_once"classes/kunde.php";

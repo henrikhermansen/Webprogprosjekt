@@ -1,6 +1,6 @@
-<?if(!$gjennomIndex) die("Access denied.");?>
+<?php if(!$gjennomIndex) die("Access denied.");?>
 
-<?
+<?php
 
 require_once"functions/cryptPass.php";
 require_once"functions/fixSpecialChars.php";

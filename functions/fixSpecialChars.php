@@ -1,6 +1,6 @@
-<?if(!$gjennomIndex) die("Access denied.");?>
+<?php if(!$gjennomIndex) die("Access denied.");?>
 
-<?
+<?php
 
 function fixSpecialChars($streng)
 {
