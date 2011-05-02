@@ -16,7 +16,7 @@ switch ($kategori)
             break;
     case 5: $katnavn = "Objektiv";
             break;
-    case 6: $katnavn = "Tilbehør";
+    case 6: $katnavn = "Tilbeh&oslash;r";
             break;
 }
 

@@ -2,6 +2,8 @@
 
 session_start();
 
+ERROR_REPORTING(E_ALL ^ E_NOTICE);
+
 date_default_timezone_set('Europe/Oslo');
 $gjennomIndex=true;
 
@@ -28,7 +30,7 @@ $db->close();
 <body>
 
 <div id="header">
-	<h1>Nettbutikken vår</h1>
+    <h1>Nettbutikken v&aring;r</h1>
 </div>
 
 <div id="v_meny">
@@ -39,7 +41,7 @@ $db->close();
 		<li><a href="index.php?side=varer&amp;kat=3">Kompaktkamera</a></li>
 		<li><a href="index.php?side=varer&amp;kat=4">Undervannskamera</a></li>
 		<li><a href="index.php?side=varer&amp;kat=5">Objektiv</a></li>
-                <li><a href="index.php?side=varer&amp;kat=6">Tilbehør</a></li>
+                <li><a href="index.php?side=varer&amp;kat=6">Tilbeh&oslash;r</a></li>
 		<li><a href="index.php?side=varer&amp;kat=0">Alle kategorier</a></li>
 	</ul>
 	<hr/>
