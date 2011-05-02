@@ -37,3 +37,29 @@ body {
     float: left;
     padding: 1em;
 }
+
+form p {display:table;}
+form label {display:table-cell;width:250px;}
+form span {display:table-cell;}
+form input, form select {width:200px;}
+form input[type=checkbox] {width:60px;}
+form input[type=submit],form input[type=button] {padding:3px;width:150px;margin-left:50px;}
+
+.feilmelding
+{
+	padding:0.2em;
+	background:#ffd0cc;
+	border:2px solid #cc6655;
+}
+.advarselmelding
+{
+	padding:0.2em;
+	background:#ffffcc;
+	border:2px solid #cccc55;
+}
+.okmelding
+{
+	padding:0.2em;
+	background:#d0ffcc;
+	border:2px solid #66bb55;
+}

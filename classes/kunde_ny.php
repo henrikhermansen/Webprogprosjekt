@@ -2,9 +2,10 @@
 
 <?php
 
-class Kunde extends BasicKunde
+class NyKunde extends BasicKunde
 {
-	private $utlogging,$sessionExpire;
+	private $KNr, $fornavn, $etternavn, $adresse, $postnr, $poststed, $telefonnr, $epost, $passord, $utlogging;
+	private $sessionExpire;
 
 	function __construct()
 	{ $this->sessionExpire=60*30; }
@@ -53,6 +54,95 @@ class Kunde extends BasicKunde
 		$db->close();
 		unset($db);
 		return $error;
+	}
+
+	function setFornavn($navn)
+	{
+		if(preg_match("/^\b[a-å ]{2,30}\b$/i",$navn))
+		{
+		  $this->fornavn=$navn;
+		  return null;
+		}
+		else
+		  return "Fornavn kan kun inneholde bokstaver. Minst to og maks 30.";
+	}
+
+	function setEtternavn($navn)
+	{
+		if(preg_match("/^\b[a-å ]{2,50}\b$/i",$navn))
+		{
+		  $this->etternavn=$navn;
+		  return null;
+		}
+		else
+		  return "Etternavn kan kun inneholde bokstaver. Minst to og maks 50.";
+	}
+
+	*/function getFornavn()
+	{
+		return $this->fornavn;
+	}/*
+
+	function getEtternavn()
+	{
+		return $this->etternavn;
+	}
+
+	function getNavn()
+	{
+		return $this->fornavn." ".$this->etternavn;
+	}
+
+	function setTelefon($tlf)
+	{
+		if(preg_match("/^\b\d{8}\b$/",$tlf))
+		{
+			$this->telefon=$tlf;
+			return null;
+		}
+		else
+		  return "Telefonnummer må inneholde 8 siffer.";
+	}
+
+	function getTelefon()
+	{
+		return $this->telefon;
+	}
+
+	function getAdgang()
+	{
+		return $this->adgang;
+	}
+
+	function setEpost($epost,$db)
+	{
+		$sjekkEpost=$db->count("epost","brukere","epost='$epost'");
+		if($sjekkEpost>0 && $epost!=$this->epost)
+		   return "E-postadressen er allerede registrert.";
+	   if(strlen($epost)>255)
+	      return "E-postadressen kan maks inneholde 255 tegn.";
+		if(preg_match("/^\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i",$epost))
+		{
+		  $this->epost=$epost;
+		  return null;
+		}
+		else
+		  return "Feil format på e-postadressen.";
+	}
+
+	function getEpost()
+	{
+		return $this->epost;
+	}
+
+	function getId()
+	{
+		return $this->id;
+	}
+
+	function getUtlogging()
+	{
+		return $this->utlogging;
 	}
 
 	function lagreBruker()
