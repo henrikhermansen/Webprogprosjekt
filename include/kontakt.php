@@ -1,7 +1,7 @@
 <script type="text/javascript">
 function valider_navn()
 {
-    regEx = /^[a-zA-Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ .\- ]{2,}\s[a-zA-Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ .\- ]{2,}$/;
+    regEx = /^[a-zA-ZæøåÆØÅ .\- ]{2,}\s[a-zA-ZæøåÆØÅ .\- ]{2,}$/;
     if(regEx.test(document.epostskjema.navn.value))
     {
         document.getElementById("feilnavn").innerHTML = "";
@@ -12,7 +12,7 @@ function valider_navn()
 }
 function valider_epost()
 {
-    regEx = /^[0-9a-zA-Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ .\-\_ ]+@[0-9a-zA-Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ .\-\_ ]{2,}\.[a-zA-Z]{2,4}$/;
+    regEx = /^[0-9a-zA-ZæøåÆØÅ .\-\_ ]+@[0-9a-zA-ZæøåÆØÅ .\-\_ ]{2,}\.[a-zA-Z]{2,4}$/;
     if(regEx.test(document.epostskjema.epost.value))
     {
         document.getElementById("feilepost").innerHTML = "";
@@ -28,7 +28,7 @@ function valider_melding()
         document.getElementById("feilmelding").innerHTML = "";
         return true;
     }
-    document.getElementById("feilmelding").innerHTML = "Du mï¿½ skrive noe i meldingsfeltet<br/>";
+    document.getElementById("feilmelding").innerHTML = "Du m&aring; skrive noe i meldingsfeltet<br/>";
     return false;
 }
 function valider_alle()
@@ -67,15 +67,15 @@ else
     $epost = $_POST['epost'];
     $melding = $_POST['melding'];
 
-    if(!preg_match("/^[a-zA-Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ .\- ]{2,}\s[a-zA-Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ .\- ]{2,}$/", $navn))
-        die("Navnet er ikke pï¿½ riktig format");
-    if(!preg_match("/^[0-9a-zA-Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ .\-\_ ]+@[0-9a-zA-Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ .\-\_ ]{2,}\.[a-zA-Z]{2,4}$/", $epost))
-        die("E-postadressen er ikke pï¿½ riktig format");
+    if(!preg_match("/^[a-zA-ZæøåÆØÅ .\- ]{2,}\s[a-zA-ZæøåÆØÅ .\- ]{2,}$/", $navn))
+        die("<p>Navnet er ikke p&aring; riktig format</p>");
+    if(!preg_match("/^[0-9a-zA-ZæøåÆØÅ .\-\_ ]+@[0-9a-zA-ZæøåÆØÅ .\-\_ ]{2,}\.[a-zA-Z]{2,4}$/", $epost))
+        die("<p>E-postadressen er ikke p&aring; riktig format</p>");
     if($melding == "")
         die("Meldingen er blank");
 
     mail("s171200@stud.hio.no", "Melding fra nettbutikken", $melding."\r\n\\r\nAvsender: ".$navn, "From: ".$epost);
 
-    echo "Din foresp&oslash;rsel er n&aring; sendt. Vi kommer tilbake til deg s&aring; raskt vi kan!";
+    echo "<p>Din foresp&oslash;rsel er n&aring; sendt. Vi kommer tilbake til deg s&aring; raskt vi kan!</p>";
 }
 ?>

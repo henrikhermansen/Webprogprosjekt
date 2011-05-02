@@ -13,11 +13,11 @@ $denied_includes=array("","side_handlekurv"); // Sider som ikke skal kunne vises
 require_once"_functions.php";
 require_once"_classes.php";
 
-// Dette er kun en test for Ã¥ vise prinsippet med klassen sql.
-$db=new sql();
-if($db->connect_error)
-	echo"Tilkoblingen feilet bla bla";
-$db->close();
+// Dette er kun en test for å vise prinsippet med klassen sql.
+//$db=new sql();
+//if($db->connect_error)
+//	echo"Tilkoblingen feilet bla bla";
+//$db->close();
 // Test END
 ?>
 <!DOCTYPE HTML>
@@ -36,7 +36,19 @@ $db->close();
 <div id="v_meny">
 	<h3>Kategorier:</h3>
 	<ul>
-		<li><a href="index.php?side=varer&amp;kat=1">Speilreflekskamera</a></li>
+		<?php
+//                $db = new sql();
+//                $resultat = $db->query("SELECT * FROM webprosjekt_kategori;");
+//                $antrader = $db->affected_rows;
+//                if($antrader == 0)
+//                    die("Feil (001)");
+//                for($i = 0; $i < $antrader; $i++)
+//                {
+//                    $rad = $resultat->fetch_assoc();
+//                    echo '<li><a href="index.php?side=varer&amp;kat='.$rad["KatNr"].'">'.$rad["Navn"].'</a></li>';
+//                }
+                ?>
+                <li><a href="index.php?side=varer&amp;kat=1">Speilreflekskamera</a></li>
 		<li><a href="index.php?side=varer&amp;kat=2">Superzoomkamera</a></li>
 		<li><a href="index.php?side=varer&amp;kat=3">Kompaktkamera</a></li>
 		<li><a href="index.php?side=varer&amp;kat=4">Undervannskamera</a></li>
