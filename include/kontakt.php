@@ -41,8 +41,8 @@ function valider_alle()
 
 <h3>Postadresse:</h3>
 <p>H&oslash;yskolen i Oslo<br/>
-    Postboks 4 St. Olavs plass<br/>
-    0130 Oslo</p>
+   Postboks 4 St. Olavs plass<br/>
+   0130 Oslo</p>
 
 
 
@@ -75,7 +75,7 @@ else
     if($melding == "")
         die("Meldingen er blank");
 
-    mail("s171200@stud.hio.no", "Melding fra nettbutikken", $melding."\r\n\\r\nAvsender: ".$navn, "From: ".$epost);
+    @mail("s171200@stud.hio.no", "Melding fra nettbutikken", $melding."\r\n\\r\nAvsender: ".$navn, "From: ".$epost);
 
     echo "<p>Din foresp&oslash;rsel er n&aring; sendt. Vi kommer tilbake til deg s&aring; raskt vi kan!</p>";
 }
