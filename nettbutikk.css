@@ -65,3 +65,13 @@ form textarea {width:450px;}
 	background:#d0ffcc;
 	border:2px solid #66bb55;
 }
+
+#minkontomeny{display: table;}
+#minkontomeny a
+{
+    display: table-cell;
+    width: 150px;
+    background: #cccccc;
+    padding: 5px;
+    text-decoration: none;
+}

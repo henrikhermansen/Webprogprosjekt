@@ -68,7 +68,7 @@ class NyKunde extends BasicKunde
 		      "<p>Her er din innloggingsinformasjon:<br>".
 		      "Brukernavn: $epost <br>".
 		      "Passord: $passord </p>".
-		      "<p>Du kan nå <a href=\"index.php?side=loghinn\">logge inn</a>.</p>";
+		      "<p>Du kan nå <a href=\"index.php?side=logginn\">logge inn</a>.</p>";
 	}
 }
 

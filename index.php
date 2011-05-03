@@ -44,6 +44,8 @@ if(isset($_SESSION['admin']))   // Innlogget admin
 <title>Nettbutikk</title>
 <?php if($side=="nykunde") echo"<script type=\"text/javascript\" src=\"js/poststed.js\"></script>"; ?>
 <?php if($side=="nykunde" || $side=="minkonto") echo"<script type=\"text/javascript\" src=\"js/kundeFeltValidering.js\"></script>"; ?>
+<?php if($side=="kontakt") echo"<script type=\"text/javascript\" src=\"js/kontaktValidering.js\"></script>"; ?>
+<?php if($side=="admlogginn") echo"<script type=\"text/javascript\" src=\"js/admloginValidering.js\"></script>"; ?>
 </head>
 <body>
 

@@ -28,9 +28,10 @@ class Kunde extends BasicKunde
 		$this->etternavn=$brukerinfo['Etternavn'];
 		$this->adresse=$brukerinfo['Adresse'];
 		$this->postnr=$brukerinfo['PostNr'];
-		$this->telefon=$brukerinfo['Telefonnr'];
-		$this->epost=$brukerinfo['epost'];
-		$this->passord=$brukerinfo['passord'];
+                $this->poststed=sjekkPostnr($this->postnr);
+		$this->telefonnr=$brukerinfo['Telefonnr'];
+		$this->epost=$brukerinfo['Epost'];
+		$this->passord=$brukerinfo['Passord'];
 		$this->utlogging=time()+$this->sessionExpire;
 		return true;
 	}
@@ -95,6 +96,18 @@ class Kunde extends BasicKunde
 		$_SESSION['bruker']=serialize($this);
 		return "<span class=\"skjemaOk\">Passordet ditt ble endret.</span>";
 	}*/
+
+        function getAlleOrdre()
+        {
+            $db = new sql();
+            $resultat = $db->query("SELECT OrdreNr FROM webprosjekt_ordre WHERE KNr = '$this->KNr' ORDER BY OrdreDato DESC;");
+            $rader = $db->affected_rows;
+            $db->close();
+            $ordrenummer;
+            while($rad = $resultat->fetch_assoc())
+                $ordrenummer[] = $rad['OrdreNr'];
+            return $ordrenummer;
+        }
 }
 
 ?>
