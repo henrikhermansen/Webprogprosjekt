@@ -1,6 +1,6 @@
 <?php if(!$gjennomIndex) die("Access denied.");?>
 
-<?
+<?php
 
 function genPassord($lengde=8)
 {

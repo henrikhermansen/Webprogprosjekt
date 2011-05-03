@@ -4,7 +4,7 @@ function sjekkPostnummer(nr)
 
 	if (nr.length==0)
 	{
-		document.getElementById("poststed").innerHTML="";
+		document.getElementById("poststed").innerHTML="Ugyldig postnummer";
 		return;
 	}
 
@@ -21,7 +21,10 @@ function sjekkPostnummer(nr)
 	{
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
-			document.getElementById("poststed").innerHTML=xmlhttp.responseText;
+		   if(xmlhttp.responseText=="\r\n")
+		      document.getElementById("poststed").innerHTML="Ugyldig postnummer";
+			else
+				document.getElementById("poststed").innerHTML=xmlhttp.responseText;
 		}
 	}
 	xmlhttp.open("GET","postnummer.php?postnr="+nr,true);
