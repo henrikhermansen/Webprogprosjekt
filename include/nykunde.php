@@ -43,9 +43,13 @@ if(!isset($_POST['nykunde']) || $error)
 <p>
 	<label for="postnr">Postnummer</label>
 	<span>
-		<input type="text" name="postnr" id="postnr" maxlength="4" value="<?php echo $_POST['postnr']; ?>" required>
+		<input type="text" name="postnr" id="postnr" maxlength="4" value="<?php echo $_POST['postnr']; ?>" required onKeyUp="sjekkPostnummer(this.value)">
 		<?php if($feilmeldinger['postnr']!=null) echo "<span class=\"feilmelding\">".$feilmeldinger['postnr']."</span>"; ?>
 	</span>
+</p>
+<p>
+	<label for="poststed">Poststed</label>
+	<span id="poststed"></span>
 </p>
 <p>
 	<label for="telefonnr">Telefonnummer</label>

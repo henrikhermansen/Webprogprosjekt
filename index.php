@@ -20,19 +20,19 @@ if(isset($_SESSION['kunde']))   // Innlogget kunde
 	   $_SESSION['kunde']=serialize($kunde);
 	else  // Session har gått ut på tid
 	{
-            unset($_SESSION['kunde']);
-            $side="sessionExpired";
+		unset($_SESSION['kunde']);
+		$side="sessionExpired";
 	}
 }
 if(isset($_SESSION['admin']))   // Innlogget admin
 {
 	$admin = unserialize($_SESSION['admin']);
 	if($admin->refreshSession())	// Hvis session ikke har gått ut på tid
-	   $_SESSION['admin'] = serialize($admin);
+		$_SESSION['admin'] = serialize($admin);
 	else  // Session har gått ut på tid
 	{
-            unset($_SESSION['admin']);
-            $side = "sessionExpired";
+		unset($_SESSION['admin']);
+		$side = "sessionExpired";
 	}
 }
 ?>
@@ -42,6 +42,8 @@ if(isset($_SESSION['admin']))   // Innlogget admin
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="stylesheet" type="text/css" href="nettbutikk.css" title="Standard css" />
 <title>Nettbutikk</title>
+<?php if($side=="nykunde") echo"<script type=\"text/javascript\" src=\"js/poststed.js\"></script>"; ?>
+<?php if($side=="nykunde" || $side=="minkonto") echo"<script type=\"text/javascript\" src=\"js/kundeFeltValidering.js\"></script>"; ?>
 </head>
 <body>
 
