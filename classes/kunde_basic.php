@@ -20,16 +20,35 @@ class BasicKunde
 			return "Etternavn kan kun inneholde bokstaver. Minst to og maks 45.";
 		$this->etternavn=$navn;
 		return null;
-		  
+	}
+	
+	function setAdresse($adresse)
+	{
+		if(!preg_match("/^\b[a-zæøå0-9. ]{2,100}\b$/i",$adresse))
+			return "Adresse kan kun inneholde bokstaver, tall, mellomrom og punktum. 2-100 tegn.";
+		$this->adresse=$adresse;
+		return null;
+	}
+	
+	function setPostnr($postnr,$db)
+	{
+		if(!preg_match("/^\b\d{4}\b$/i",$postnr))
+			return "Postnummer må bestå av 4 siffer.";
+		$sjekkPostnr=$db->query("SELECT Poststed FROM webprosjekt_poststeder WHERE Postnr='$postnr'");
+		if($db->affected_rows==0)
+		   return "Postnummeret finnes ikke.";
+		$poststed=$sjekkPostnr->fetch_row();
+		$this->poststed=$poststed[0];
+		$this->postnr=$postnr;
+		return null;
 	}
 
 	function setTelefonnr($tlf)
 	{
 		if(!preg_match("/^\b\d{8}\b$/",$tlf))
-		   return "Telefonnummer må inneholde 8 siffer.";
-		$this->telefon=$tlf;
+		   return "Telefonnummer må bestå av 8 siffer.";
+		$this->telefonnr=$tlf;
 		return null;
-		  
 	}
 
 	function setEpost($epost,$db)
@@ -55,7 +74,7 @@ class BasicKunde
 	function getTelefonnr()	{ return $this->telefonnr; }
 	function getEpost()		{ return $this->epost; }
 
-	function getId()			{ return $this->id; }
+	function getKNr()			{ return $this->KNr; }
 	function getUtlogging()	{ return $this->utlogging; }
 
 	/*function lagreBruker()

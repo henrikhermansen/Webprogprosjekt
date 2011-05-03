@@ -4,187 +4,86 @@
 
 class NyKunde extends BasicKunde
 {
-	private $KNr, $fornavn, $etternavn, $adresse, $postnr, $poststed, $telefonnr, $epost, $passord, $utlogging;
-	private $sessionExpire;
+	private $feilmeldinger;
 
-	function __construct()
-	{ $this->sessionExpire=60*30; }
-
-	function login($epost,$passord)
+	function __construct($fornavn,$etternavn,$adresse,$postnr,$telefonnr,$epost)
 	{
 		$db=new sql();
-		$passord=renStreng($passord,$db);
-		$epost=renStreng($epost,$db);
-		$brukerinfo=$db->query("SELECT * FROM webprosjekt_kunde WHERE epost='$epost'");
-		$rows=$db->affected_rows;
+		$error['fornavn']=$this->setFornavn(renStreng($fornavn,$db));
+		$error['etternavn']=$this->setEtternavn(renStreng($etternavn,$db));
+		$error['adresse']=$this->setAdresse(renStreng($adresse,$db));
+		$error['postnr']=$this->setPostnr(renStreng($postnr,$db),$db);
+		$error['telefonnr']=$this->setTelefonnr(renStreng($telefonnr,$db));
+		$error['epost']=$this->setEpost(renStreng($epost,$db),$db);
 		$db->close();
-		if($rows==0)
-			return false;
-		$brukerinfo=$brukerinfo->fetch_assoc();
-		//if($brukerinfo['passord']!=$cryptPass($passord,$post)) // Denne linjen skal settes inn igjen når vi begynner med krypterte passord!
-		if($brukerinfo['passord']!=$passord)                     // Denne linjen skal FJERNES
-		   return false;
-		$this->KNr=$brukerinfo['KNr'];
-		$this->fornavn=$brukerinfo['Fornavn'];
-		$this->etternavn=$brukerinfo['Etternavn'];
-		$this->adresse=$brukerinfo['Adresse'];
-		$this->postnr=$brukerinfo['PostNr'];
-		$this->telefon=$brukerinfo['Telefonnr'];
-		$this->epost=$brukerinfo['epost'];
-		$this->passord=$brukerinfo['passord'];
-		$this->utlogging=time()+$this->sessionExpire;
-		return true;
+		$this->feilmeldinger=$error;
 	}
-
-	function refreshSession()
+	
+	/*function setEpost($epost,$db)
 	{
-	   if(time()>$this->utlogging)
-	      return false;
-		$this->utlogging=time()+$this->sessionExpire;
-		return true;
-	}
-
-	/*function endreBruker($fornavn, $etternavn, $epost, $telefon)
-	{
-	   $db=new sqlConnection();
-		$error['fornavn']=$this->setFornavn(trim(mysql_real_escape_string($fornavn,$db->getLink())));
-		$error['etternavn']=$this->setEtternavn(trim(mysql_real_escape_string($etternavn,$db->getLink())));
-		$error['epost']=$this->setEpost(trim(mysql_real_escape_string($epost,$db->getLink())),$db);
-		$error['telefon']=$this->setTelefon(trim(mysql_real_escape_string($telefon,$db->getLink())));
-		$db->close();
-		unset($db);
-		return $error;
-	}
-
-	function setFornavn($navn)
-	{
-		if(preg_match("/^\b[a-å ]{2,30}\b$/i",$navn))
-		{
-		  $this->fornavn=$navn;
-		  return null;
-		}
-		else
-		  return "Fornavn kan kun inneholde bokstaver. Minst to og maks 30.";
-	}
-
-	function setEtternavn($navn)
-	{
-		if(preg_match("/^\b[a-å ]{2,50}\b$/i",$navn))
-		{
-		  $this->etternavn=$navn;
-		  return null;
-		}
-		else
-		  return "Etternavn kan kun inneholde bokstaver. Minst to og maks 50.";
-	}
-
-	*/function getFornavn()
-	{
-		return $this->fornavn;
-	}/*
-
-	function getEtternavn()
-	{
-		return $this->etternavn;
-	}
-
-	function getNavn()
-	{
-		return $this->fornavn." ".$this->etternavn;
-	}
-
-	function setTelefon($tlf)
-	{
-		if(preg_match("/^\b\d{8}\b$/",$tlf))
-		{
-			$this->telefon=$tlf;
-			return null;
-		}
-		else
-		  return "Telefonnummer må inneholde 8 siffer.";
-	}
-
-	function getTelefon()
-	{
-		return $this->telefon;
-	}
-
-	function getAdgang()
-	{
-		return $this->adgang;
-	}
-
-	function setEpost($epost,$db)
-	{
-		$sjekkEpost=$db->count("epost","brukere","epost='$epost'");
-		if($sjekkEpost>0 && $epost!=$this->epost)
+		$sjekkEpost=$db->query("SELECT COUNT(Epost) FROM webprosjekt_kunde WHERE Epost='$epost'");
+		$sjekkEpost=$sjekkEpost->fetch_row();
+		if($sjekkEpost[0]>0 && $epost!=$this->epost)
 		   return "E-postadressen er allerede registrert.";
-	   if(strlen($epost)>255)
-	      return "E-postadressen kan maks inneholde 255 tegn.";
-		if(preg_match("/^\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i",$epost))
-		{
-		  $this->epost=$epost;
-		  return null;
-		}
-		else
-		  return "Feil format på e-postadressen.";
-	}
+		if(!preg_match("/^\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i",$epost))
+			return "Feil format på e-postadressen.";
+	   if(strlen($epost)>100)
+	      return "E-postadressen kan maks inneholde 100 tegn.";
+		$this->epost=$epost;
+		return null;
+	}*/
+	
+	function getFeilmeldinger()	{ return $this->feilmeldinger; }
 
-	function getEpost()
+	function regKunde()
 	{
-		return $this->epost;
-	}
-
-	function getId()
-	{
-		return $this->id;
-	}
-
-	function getUtlogging()
-	{
-		return $this->utlogging;
-	}
-
-	function lagreBruker()
-	{
-	   $id=$this->id;
 	   $fornavn=$this->fornavn;
 	   $etternavn=$this->etternavn;
+	   $adresse=$this->adresse;
+	   $postnr=$this->postnr;
+	   $telefonnr=$this->telefonnr;
 	   $epost=$this->epost;
-	   $telefon=$this->telefon;
 
-		$db=new sqlConnection();
-		$resultat=$db->update("brukere","fornavn='$fornavn',etternavn='$etternavn',epost='$epost',telefon='$telefon'","id=$id");
+		$db=new sql();
+		$resultat=$db->query("INSERT INTO webprosjekt_kunde (Fornavn,Etternavn,Adresse,PostNr,Telefonnr,Epost,Passord)"
+									." VALUES('$fornavn','$etternavn','$adresse','$postnr','$telefonnr','$epost','temporary')");
+		$KNr=$db->insert_id;
+		if($db->affected_rows<1)
+		   return"<p class=\"feilmelding\">Databasefeil ved registrering av ny bruker. Vennligst forsøk på nytt eller ta kontakt med supporten. (Errno NK01)</p>";
+	   $passord=genPassord();
+	   $passord="testpassord"; // FJERNES NÅR BRUKEREN KAN ENDRE PASSORD!
+	   $dbPassord=cryptPass($passord,$KNr.$epost);
+	   $resultat=$db->query("UPDATE webprosjekt_kunde SET Passord='$dbPassord' WHERE KNr='$KNr'");
+		if($db->affected_rows<1)
+			return"<p class=\"feilmelding\">Databasefeil ved registrering av ny bruker. Vennligst forsøk på nytt eller ta kontakt med supporten. (Errno NK02)</p>";
 		$db->close();
-		if(!(is_bool($resultat) && $resultat==true))
-			return false;
-		return true;
+
+	   $emne="Registrering i Nettbutikken";
+	   $tekst="Hei\r\n\r\n".
+	      "Din nye bruker i HBHL nettbutikk er nå registrert.\r\n\r\n".
+	      "Her er din innloggingsinformasjon:\r\n".
+	      "Brukernavn: $epost \r\n".
+	      "Passord: $passord \r\n\r\n".
+	      "For å logge inn, gå til http://nettbutikk.henrikh.net/ \r\n".
+			"Du kan selvsagt bytte passord når du har logget inn.\r\n\r\n".
+	      "Hilsen,\r\nHiranBårdHenrikLars.";
+		$hode = 'From: nettbutikk@henrikh.net' . "\r\n".
+		'Reply-To: nettbutikk@henrikh.net' . "\r\n".
+		'Content-type: text/plain; charset=iso-8859-1' . "\r\n".
+		'X-Mailer: PHP/' . phpversion();
+
+		$resultat = @mail($epost, $emne, $tekst, $hode);
+
+		if($resultat)
+		   return"<p class=\"okemlding\">Brukeren din har nå blitt opprettet. Brukernavn og passord er sendt på e-post til $epost.</p>".
+				"<p>Du kan nå <a href=\"index.php?side=logginn\">logge inn</a>.</p>";
+		else
+		   return"<p class=\"okmelding\">Brukeren din har nå blitt opprettet.</p>".
+		      "<p>Her er din innloggingsinformasjon:<br>".
+		      "Brukernavn: $epost <br>".
+		      "Passord: $passord </p>".
+		      "<p>Du kan nå <a href=\"index.php?side=loghinn\">logge inn</a>.</p>";
 	}
-
-	function endrePassord($gammelt,$nytt,$nytt2)
-	{
-	   $db=new sqlConnection();
-	   $gammelt=trim(mysql_real_escape_string($gammelt,$db->getLink()));
-	   $nytt=trim(mysql_real_escape_string($nytt,$db->getLink()));
-	   $nytt2=trim(mysql_real_escape_string($nytt2,$db->getLink()));
-	   $db->close();
-		$kryptGammelt=new CryptPass($gammelt,$this->etternavn.$this->fornavn);
-		if($kryptGammelt->getPass()!=$this->passord)
-		   return "<span class=\"skjemafeil\">Feil nåværende passord.</span>";
-		if($nytt!=$nytt2)
-         return "<span class=\"skjemafeil\">Passordene du skrev var ikke like.</span>";
-		if(!(strlen($nytt)>=6))
-		   return "<span class=\"skjemafeil\">Passordet må være på minst 6 tegn.</span>";
-
-		$kryptNytt=new CryptPass($nytt,$this->etternavn.$this->fornavn);
-		$db=new sqlConnection();
-		$resultat=$db->update("brukere","passord='".$kryptNytt->getPass()."'","id=".$this->id);
-		if(!(is_bool($resultat) && $resultat==true))
-			return "<span class=\"skjemafeil\">Databasefeil ved lagring av nytt passord. Vennligst prøv igjen eller kontakt Henrik.</span>";
-		$this->passord=$kryptNytt->getPass();
-		$_SESSION['bruker']=serialize($this);
-		return "<span class=\"skjemaOk\">Passordet ditt ble endret.</span>";
-	}*/
 }
 
 ?>

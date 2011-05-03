@@ -4,24 +4,24 @@
 
 class Kunde extends BasicKunde
 {
-	private $utlogging,$sessionExpire;
+	private $utlogging,$sessionExpire,$feilmeldinger;
 
 	function __construct()
-	{ $this->sessionExpire=60*30; }
+	{ $this->sessionExpire=60*30;$this->feilmeldinger=array(); }
 
 	function login($epost,$passord)
 	{
 		$db=new sql();
 		$passord=renStreng($passord,$db);
 		$epost=renStreng($epost,$db);
-		$brukerinfo=$db->query("SELECT * FROM webprosjekt_kunde WHERE epost='$epost'");
+		$brukerinfo=$db->query("SELECT * FROM webprosjekt_kunde WHERE Epost='$epost'");
 		$rows=$db->affected_rows;
 		$db->close();
 		if($rows==0)
 			return false;
 		$brukerinfo=$brukerinfo->fetch_assoc();
-		//if($brukerinfo['passord']!=$cryptPass($passord,$post)) // Denne linjen skal settes inn igjen når vi begynner med krypterte passord!
-		if($brukerinfo['passord']!=$passord)                     // Denne linjen skal FJERNES
+		if($brukerinfo['Passord']!=cryptPass($passord,$brukerinfo['KNr'].$epost)) // Denne linjen skal settes inn igjen når vi begynner med krypterte passord!
+		//if($brukerinfo['Passord']!=$passord)                     // Denne linjen skal FJERNES
 		   return false;
 		$this->KNr=$brukerinfo['KNr'];
 		$this->fornavn=$brukerinfo['Fornavn'];
