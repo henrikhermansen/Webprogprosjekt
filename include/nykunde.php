@@ -11,7 +11,7 @@ if($_POST['nykunde']=="Registrer ny kunde")
 	      $error=true;
 
 	if(!$error)
-	   echo "registrerer...";//$nyKunde->regKunde();
+	   echo $nyKunde->regKunde();
 }
 
 if(!isset($_POST['nykunde']) || $error)
