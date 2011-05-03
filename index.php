@@ -20,9 +20,19 @@ if(isset($_SESSION['kunde']))   // Innlogget kunde
 	   $_SESSION['kunde']=serialize($kunde);
 	else  // Session har gått ut på tid
 	{
-		unset($_SESSION['kunde']);
-		session_unset();
-	   $side="sessionExpired";
+            unset($_SESSION['kunde']);
+            $side="sessionExpired";
+	}
+}
+if(isset($_SESSION['admin']))   // Innlogget admin
+{
+	$admin = unserialize($_SESSION['admin']);
+	if($admin->refreshSession())	// Hvis session ikke har gått ut på tid
+	   $_SESSION['admin'] = serialize($admin);
+	else  // Session har gått ut på tid
+	{
+            unset($_SESSION['admin']);
+            $side = "sessionExpired";
 	}
 }
 ?>
@@ -39,43 +49,8 @@ if(isset($_SESSION['kunde']))   // Innlogget kunde
     <h1>Nettbutikken v&aring;r</h1>
 </div>
 
-<div id="v_meny">
-	<h3>Kategorier:</h3>
-	<ul>
-		<?php
-		$db = new sql();
-		$resultat = $db->query("SELECT * FROM webprosjekt_kategori;");
-		if($db->affected_rows == 0)
-			die("Feil (001)");
-		while($rad = $resultat->fetch_assoc())
-			echo '<li><a href="index.php?side=varer&amp;kat='.$rad["KatNr"].'">'.$rad["Navn"].'</a></li>';
-		$db->close();
-		?>
-		<!--<li><a href="index.php?side=varer&amp;kat=1">Speilreflekskamera</a></li>
-		<li><a href="index.php?side=varer&amp;kat=2">Superzoomkamera</a></li>
-		<li><a href="index.php?side=varer&amp;kat=3">Kompaktkamera</a></li>
-		<li><a href="index.php?side=varer&amp;kat=4">Undervannskamera</a></li>
-		<li><a href="index.php?side=varer&amp;kat=5">Objektiv</a></li>
-		<li><a href="index.php?side=varer&amp;kat=6">Tilbeh&oslash;r</a></li>-->
-		<li><a href="index.php?side=varer&amp;kat=0">Alle kategorier</a></li>
-	</ul>
-	<hr/>
-	<ul>
-		<?php
-		if(!isset($kunde) || $side=="loggut")
-		{?>
-			<li><a href="index.php?side=logginn">Logg inn</a></li>
-			<li><a href="index.php?side=nykunde">Ny kunde</a></li>
-		<?php }
-		else
-		{?>
-			<li><a href="index.php?side=minkonto">Min konto</a></li>
-			<li><a href="index.php?side=loggut">Logg ut</a></li>
-		<?php }
-		?>
-		<li><a href="index.php?side=kontakt">Kontakt oss</a></li>
-		<li><a href="index.php?side=admlogginn">Administrator</a></li>
-	</ul>
+<div id="l_meny">
+	<?php include "menu.php"; ?>
 </div>
 
 <div id="innhold">

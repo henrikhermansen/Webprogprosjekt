@@ -28,5 +28,13 @@ class Admin
         $this->utlogging = time() + $this->sessionExpire;
         return true;
     }
+
+    function refreshSession()
+    {
+        if(time() > $this->utlogging)
+            return false;
+        $this->utlogging = time() + $this->sessionExpire;
+            return true;
+    }
 }
 ?>

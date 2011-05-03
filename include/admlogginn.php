@@ -3,40 +3,44 @@
     {
         if(document.alogin.bnavn.value != "" && document.alogin.pord.value != "")
             return true;
-        document.getElementById("feilmelding").innerHTML = "Fyll ut begge felt";
+        document.getElementById("feilmelding").innerHTML = "<p class=\"feilmelding\">Fyll ut begge feltene</p>";
         return false;
     }
 </script>
 
-<h2>Logg inn som administrator:</h2>
-
+<h2>Logg inn som administrator</h2>
+<div id="feilmelding"></div>
 <?php
+$innlogget = false;
 
 // Brukernavn: sjefen
 // Passord: svaktpassord
 
-if(!isset($_POST['knapp']))
-echo
-'<form name="alogin" action="" method="post">
-    <span style="display: inline-block; width:5em">Brukernavn:</span><input type="text" name="bnavn" /><br/>
-    <span style="display: inline-block; width:5em">Passord:</span><input type="password" name="pord" /><br/>
-    <br/>
-    <input type="submit" name="knapp" value="Logg inn" onClick="return valider_alle()" />
-    <div id="feilmelding" style="color: #ff0000;"></div>
-</form>';
-else
+if(isset ($_POST['knapp']))
 {
     $bnavn = $_POST['bnavn'];
     $pord = $_POST['pord'];
-
-    if($bnavn == "" || $pord == "")
-        die("<p>Begge felter må fylles ut</p>");
-
     $admin = new Admin();
 
-    if(!$admin->login($bnavn, $pord))
-        die("<p>Feil kombinasjon av brukernavn og passord</p>");
-
-    echo "<p>Du er nå logget inn som ".$bnavn.".</p>";
+    if($bnavn == "" || $pord == "")
+        echo "<p class=\"feilmelding\">Fyll ut begge feltene</p>";
+    else if(!$admin->login($bnavn, $pord))
+        echo "<p class=\"feilmelding\">Feil kombinasjon av brukernavn og passord</p>";
+    else
+    {
+        $innlogget = true;
+        $_SESSION['admin'] = serialize($admin);
+        echo "<p>Du er nå logget inn som ".$bnavn.", og kan <a href=\"index.php\">gå videre til nettbutikken.</p>";
+    }
 }
+
+if(!$innlogget)
+{?>
+<form name="alogin" action="" method="post">
+    <p><label>Brukernavn</label><input type="text" name="bnavn" /></p>
+    <p><label>Passord</label><input type="password" name="pord" /></p>
+    <p><input type="submit" name="knapp" value="Logg inn" onClick="return valider_alle()" /></p>
+</form>
+<?php }
+
 ?>

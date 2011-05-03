@@ -7,7 +7,7 @@ function valider_navn()
         document.getElementById("feilnavn").innerHTML = "";
         return true;
     }
-    document.getElementById("feilnavn").innerHTML = " Skriv inn et korrekt navn"
+    document.getElementById("feilnavn").innerHTML = "&nbsp;Skriv inn et korrekt navn"
     return false;
 }
 function valider_epost()
@@ -18,7 +18,7 @@ function valider_epost()
         document.getElementById("feilepost").innerHTML = "";
         return true;
     }
-    document.getElementById("feilepost").innerHTML = " Skriv inn en gyldig epostadresse"
+    document.getElementById("feilepost").innerHTML = "&nbsp;Skriv inn en gyldig epostadresse"
     return false;
 }
 function valider_melding()
@@ -28,7 +28,7 @@ function valider_melding()
         document.getElementById("feilmelding").innerHTML = "";
         return true;
     }
-    document.getElementById("feilmelding").innerHTML = "Du m&aring; skrive noe i meldingsfeltet<br/>";
+    document.getElementById("feilmelding").innerHTML = "<p class=\"feilmelding\">Du m&aring; skrive noe i meldingsfeltet</p>";
     return false;
 }
 function valider_alle()
@@ -48,19 +48,20 @@ function valider_alle()
 
 <?php
 if(!isset ($_POST['knapp']))
-echo
-'<h3>Kontakskjema:</h3>
+{?>
+<h3>Kontakskjema:</h3>
 <p>Ved &aring; fylle ut skjemaet under, tar vi kontakt med deg s&aring; raskt vi kan!</p>
 <form action="" name="epostskjema" method="post">
-        <span style="display: inline-block; width:5em">Fullt navn:</span><input type="text" name="navn" onKeyUp="valider_navn()" /><span id="feilnavn" style="color: #ff0000;"> *</span><br/>
-        <span style="display: inline-block; width:5em">E-post:</span><input type="text" name="epost" onKeyUp="valider_epost()" /><span id="feilepost" style="color: #ff0000;"> *</span><br/>
-        <br/>
-        Melding:<br/>
-        <textarea cols="40" rows="10" name="melding" onKeyUp="valider_melding()"></textarea><br/>
-        <span id="feilmelding" style="color: #ff0000;"></span>
-        <br/>
-        <input type="submit" name="knapp" value="Send inn" onClick="return valider_alle()" />
-</form>';
+        <p><label>Fullt navn</label><input type="text" name="navn" onChange="valider_navn()" /><span id="feilnavn" style="color: #ff0000;">&nbsp;*</span></p>
+        <p><label>E-post</label><input type="text" name="epost" onChange="valider_epost()" /><span id="feilepost" style="color: #ff0000;">&nbsp;*</span></p>
+        <div id="feilmelding"></div>
+        <p>
+        Melding<br/>
+        <textarea cols="40" rows="10" name="melding" onChange="valider_melding()"></textarea>
+        </p>
+        <p><input type="submit" name="knapp" value="Send inn" onClick="return valider_alle()" /></p>
+</form>
+<?php }
 else
 {
     $navn = $_POST['navn'];
