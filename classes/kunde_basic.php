@@ -76,47 +76,6 @@ class BasicKunde
 
 	function getKNr()			{ return $this->KNr; }
 	function getUtlogging()	{ return $this->utlogging; }
-
-	/*function lagreBruker()
-	{
-	   $id=$this->id;
-	   $fornavn=$this->fornavn;
-	   $etternavn=$this->etternavn;
-	   $epost=$this->epost;
-	   $telefon=$this->telefon;
-
-		$db=new sqlConnection();
-		$resultat=$db->update("brukere","fornavn='$fornavn',etternavn='$etternavn',epost='$epost',telefon='$telefon'","id=$id");
-		$db->close();
-		if(!(is_bool($resultat) && $resultat==true))
-			return false;
-		return true;
-	}
-
-	function endrePassord($gammelt,$nytt,$nytt2)
-	{
-	   $db=new sqlConnection();
-	   $gammelt=trim(mysql_real_escape_string($gammelt,$db->getLink()));
-	   $nytt=trim(mysql_real_escape_string($nytt,$db->getLink()));
-	   $nytt2=trim(mysql_real_escape_string($nytt2,$db->getLink()));
-	   $db->close();
-		$kryptGammelt=new CryptPass($gammelt,$this->etternavn.$this->fornavn);
-		if($kryptGammelt->getPass()!=$this->passord)
-		   return "<span class=\"skjemafeil\">Feil nåværende passord.</span>";
-		if($nytt!=$nytt2)
-         return "<span class=\"skjemafeil\">Passordene du skrev var ikke like.</span>";
-		if(!(strlen($nytt)>=6))
-		   return "<span class=\"skjemafeil\">Passordet må være på minst 6 tegn.</span>";
-
-		$kryptNytt=new CryptPass($nytt,$this->etternavn.$this->fornavn);
-		$db=new sqlConnection();
-		$resultat=$db->update("brukere","passord='".$kryptNytt->getPass()."'","id=".$this->id);
-		if(!(is_bool($resultat) && $resultat==true))
-			return "<span class=\"skjemafeil\">Databasefeil ved lagring av nytt passord. Vennligst prøv igjen eller kontakt Henrik.</span>";
-		$this->passord=$kryptNytt->getPass();
-		$_SESSION['bruker']=serialize($this);
-		return "<span class=\"skjemaOk\">Passordet ditt ble endret.</span>";
-	}*/
 }
 
 ?>

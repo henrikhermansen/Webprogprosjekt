@@ -19,20 +19,6 @@ class NyKunde extends BasicKunde
 		$this->feilmeldinger=$error;
 	}
 	
-	/*function setEpost($epost,$db)
-	{
-		$sjekkEpost=$db->query("SELECT COUNT(Epost) FROM webprosjekt_kunde WHERE Epost='$epost'");
-		$sjekkEpost=$sjekkEpost->fetch_row();
-		if($sjekkEpost[0]>0 && $epost!=$this->epost)
-		   return "E-postadressen er allerede registrert.";
-		if(!preg_match("/^\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i",$epost))
-			return "Feil format på e-postadressen.";
-	   if(strlen($epost)>100)
-	      return "E-postadressen kan maks inneholde 100 tegn.";
-		$this->epost=$epost;
-		return null;
-	}*/
-	
 	function getFeilmeldinger()	{ return $this->feilmeldinger; }
 
 	function regKunde()
