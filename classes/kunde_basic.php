@@ -34,11 +34,10 @@ class BasicKunde
 	{
 		if(!preg_match("/^\b\d{4}\b$/i",$postnr))
 			return "Postnummer må bestå av 4 siffer.";
-		$sjekkPostnr=$db->query("SELECT Poststed FROM webprosjekt_poststeder WHERE Postnr='$postnr'");
-		if($db->affected_rows==0)
-		   return "Postnummeret finnes ikke.";
-		$poststed=$sjekkPostnr->fetch_row();
-		$this->poststed=$poststed[0];
+		$poststed=sjekkPostnr($postnr);
+		if($poststed=="Ugyldig postnummer")
+		   return "Ugyldig postnummer.";
+		$this->poststed=$poststed;
 		$this->postnr=$postnr;
 		return null;
 	}
