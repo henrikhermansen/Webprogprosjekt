@@ -22,4 +22,26 @@ switch ($kategori)
 
 echo "<h2>".$katnavn."</h2>";
 
+$vare = new Vare();
+$vareliste = $vare->getVarer($kategori);
+
+foreach ($vareliste as $varer)
+{
+    $bildeurl = $varer[0];
+    $vnr = $varer[1];
+    $varenavn = substr($varer[2], 0, 50);
+    $beskrivelse = substr($varer[3], 0, 300);
+    $pris = number_format($varer[4],2,',','.');
+    
+    if(!is_file($bildeurl))
+       $bildeurl = "images/standardbilde.jpg";
+    echo "<div class='varebilde'><img src='$bildeurl' alt='$varenavn' /></div>
+            <div class='varetekst'>
+            <p>$vnr</p>
+            <h3><a href='index.php?vareinfo&amp;vnr=".$vnr."'>$varenavn</a></h3>
+            <p>$beskrivelse</p>
+            </div>
+            <div class='pris'><p>$pris</p></div>'";
+}
 ?>
+
