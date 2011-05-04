@@ -2,6 +2,16 @@
 
 class Vare
 {
-    //put your code here
+    function getVarer($kategori = false)
+    {
+        if(!$kategori)
+        {
+            //List ut alle kategorier
+        }
+        else
+        {
+            //List ut alle varer i kategorien $kategori
+        }
+    }
 }
 ?>
