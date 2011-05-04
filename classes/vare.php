@@ -24,11 +24,12 @@ class Vare
         {
             $db = new sql();
             $resultat = $db->query("SELECT webprosjekt_vare.Bilde, webprosjekt_vare.VNr, webprosjekt_vare.Varenavn, webprosjekt_vare.Beskrivelse, webprosjekt_vare.Pris
-                                    FROM webprosjekt_vare, webprosjekt_kategori
-                                    WHERE webprosjekt_vare.KatNr=webprosjekt_kategori.KatNr
-                                    AND KatNr = '$kategori';");
-            if($db->affected_rows == 0)
-                die("Feil - finner ikke vare i databasen (B02)");
+                                    FROM webprosjekt_vare
+                                    WHERE KatNr = '$kategori';");
+            if(!$resultat)
+                die("Feil - finner ikke vare i databasen (B03)");
+//            if($db->affected_rows == 0)
+//                die("Feil - finner ikke vare i databasen (B02)");
             $db->close();
             $returarray;
             while($rad = $resultat->fetch_assoc())
