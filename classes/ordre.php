@@ -57,7 +57,7 @@ class Ordre
         $resultat = $db->query("SELECT webprosjekt_vare.VNr, Varenavn, Pris, webprosjekt_ordrelinje.Antall, Pris*webprosjekt_ordrelinje.Antall AS Total
                                 FROM webprosjekt_vare INNER JOIN webprosjekt_ordrelinje ON webprosjekt_vare.VNr = webprosjekt_ordrelinje.VNr
                                 WHERE OrdreNr = '$this->OrdreNr';");
-        if($db->affected_rows == 0)
+        if(!$resultat)
             die("Feil - finner ikke ordre i databasen (003)");
         $db->close();
         $returarray;
