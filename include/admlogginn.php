@@ -20,7 +20,7 @@ if(isset ($_POST['knapp']))
     {
         $innlogget = true;
         $_SESSION['admin'] = serialize($admin);
-        echo "<p>Du er nå logget inn som ".$bnavn.", og kan <a href=\"index.php\">gå videre til nettbutikken.</p>";
+        echo "<p>Du er nå logget inn som ".$bnavn.", og kan <a href=\"index.php\">gå videre til nettbutikken.</a></p>";
     }
 }
 

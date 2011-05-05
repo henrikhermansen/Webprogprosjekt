@@ -46,6 +46,7 @@ form input, form select {width:200px;}
 form input[type=checkbox] {width:60px;}
 form input[type=submit],form input[type=button] {padding:3px;width:150px;margin-left:50px;}
 form textarea {width:450px;}
+#glemt {padding-left: 46px;}
 
 .leggtilvare input[type=submit] {padding:0px;width:60px;margin-left:0px;}
 .leggtilvare input[type=text] {width:30px;}

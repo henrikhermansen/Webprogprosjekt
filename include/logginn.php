@@ -9,7 +9,7 @@ if($_POST['logginn']=="Logg inn")
 	{
 		$innlogget=true;
 		$_SESSION['kunde']=serialize($kunde);
-		echo"<p>Velkommen ".$kunde->getFornavn().". Du er nå logget inn og kan <a href=\"index.php\">gå videre til nettbutikken.</p>";
+		echo"<p>Velkommen ".$kunde->getFornavn().". Du er nå logget inn og kan <a href=\"index.php\">gå videre til nettbutikken.<a/></p>";
 	}
 	else
 	   echo"<p class=\"feilmelding\">Feil e-post eller passord.</p>";
@@ -29,6 +29,7 @@ if(!$innlogget)
 </p>
 <p>
 	<input type="submit" name="logginn" id="logginn" value="Logg inn">
+        <a id="glemt" href="index.php?side=glemtpassord">Glemt passord?</a>
 </p>
 </form>
 <?php } ?>

@@ -34,8 +34,10 @@ else
     if($melding == "")
         die("Meldingen er blank");
 
-    @mail("s171200@stud.hio.no", "Melding fra nettbutikken", $melding."\r\n\\r\nAvsender: ".$navn, "From: ".$epost);
-
-    echo "<p>Din foresp&oslash;rsel er n&aring; sendt. Vi kommer tilbake til deg s&aring; raskt vi kan!</p>";
+    $sendt = @mail("s171200@stud.hio.no", "Melding fra nettbutikken", $melding."\r\n\\r\nAvsender: ".$navn, "From: ".$epost);
+    if($sendt)
+        echo "<p class=\"okmelding\">Din foresp&oslash;rsel er n&aring; sendt. Vi kommer tilbake til deg s&aring; raskt vi kan!</p>";
+    else
+        echo "<p class=\"feilmelding\">Kunne ikke sende melding.</p>";
 }
 ?>
