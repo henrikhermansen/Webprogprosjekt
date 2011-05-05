@@ -1,5 +1,4 @@
 <?php
-if(!$gjennomIndex) die("Access denied.");
 $kategori = $_REQUEST['kat'];
 $katnavn;
 
@@ -39,25 +38,13 @@ else
 
         if(!is_file($bildeurl))
            $bildeurl = "images/standardbilde.jpg";
-        echo "<div class='varelinje'><span class='varebilde'><img src='$bildeurl' alt='$vnr' /></span>
-                <span class='varetekst'>
-                <h3><a href='index.php?side=vareinfo&amp;vnr=".$vnr."'>".$varenavn."</a></h3>
+        echo "<div class='varebilde'><img src='$bildeurl' alt='$varenavn' /></div>
+                <div class='varetekst'>
+                <p>$vnr</p>
+                <h3><a href='index.php?vareinfo&amp;vnr=".$vnr."'>$varenavn</a></h3>
                 <p>$beskrivelse</p>
-                </span>
-                <span class='pris'><p>$pris</p>
-                <form class='leggtilvare' action='' method='post' >
-                    <input type='hidden' name='vnr' value='$vnr' />
-                    <input type='text' name='antall' value='1' />
-                    <input type='submit' name='leggihandlekurv' value='Legg til' />
-                </form>
-                </span>
-                </div>";
-       echo "<hr/>";
-    }
-
-    if(isset($_POST['leggihandlekurv']))
-    {
-
+                </div>
+                <div class='pris'><p>$pris</p></div>";
     }
 ?>
 

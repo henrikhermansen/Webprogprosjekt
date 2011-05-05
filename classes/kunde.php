@@ -4,10 +4,10 @@
 
 class Kunde extends BasicKunde
 {
-	private $utlogging,$sessionExpire,$feilmeldinger;
+	private $utlogging,$sessionExpire;
 
 	function __construct()
-	{ $this->sessionExpire=60*30;$this->feilmeldinger=array(); }
+	{ $this->sessionExpire=60*30; }
 
 	function login($epost,$passord)
 	{
@@ -44,35 +44,42 @@ class Kunde extends BasicKunde
 		return true;
 	}
 
-	/*function endreBruker($fornavn, $etternavn, $epost, $telefon)
+	function endreKunde($fornavn,$etternavn,$adresse,$postnr,$telefonnr)
 	{
-	   $db=new sqlConnection();
-		$error['fornavn']=$this->setFornavn(trim(mysql_real_escape_string($fornavn,$db->getLink())));
-		$error['etternavn']=$this->setEtternavn(trim(mysql_real_escape_string($etternavn,$db->getLink())));
-		$error['epost']=$this->setEpost(trim(mysql_real_escape_string($epost,$db->getLink())),$db);
-		$error['telefon']=$this->setTelefon(trim(mysql_real_escape_string($telefon,$db->getLink())));
+	   $db=new sql();
+		$error['fornavn']=$this->setFornavn(renStreng($fornavn,$db));
+		$error['etternavn']=$this->setEtternavn(renStreng($etternavn,$db));
+		$error['adresse']=$this->setAdresse(renStreng($adresse,$db));
+		$error['postnr']=$this->setPostnr(renStreng($postnr,$db),$db);
+		$error['telefonnr']=$this->setTelefonnr(renStreng($telefonnr,$db));
 		$db->close();
-		unset($db);
 		return $error;
 	}
 
-	function lagreBruker()
+	function lagreKunde()
 	{
-	   $id=$this->id;
+	   $KNr=$this->KNr;
 	   $fornavn=$this->fornavn;
 	   $etternavn=$this->etternavn;
-	   $epost=$this->epost;
-	   $telefon=$this->telefon;
+	   $adresse=$this->adresse;
+	   $postnr=$this->postnr;
+	   $telefonnr=$this->telefonnr;
 
-		$db=new sqlConnection();
-		$resultat=$db->update("brukere","fornavn='$fornavn',etternavn='$etternavn',epost='$epost',telefon='$telefon'","id=$id");
+		$db=new sql();
+		$resultat=$db->query("UPDATE webprosjekt_kunde SET fornavn='$fornavn',etternavn='$etternavn',adresse='$adresse',postnr='$postnr',telefonnr='$telefonnr' WHERE KNr='$KNr'");
+		$errno=$db->errno;
+		$rows=$db->affected_rows;
 		$db->close();
-		if(!(is_bool($resultat) && $resultat==true))
-			return false;
-		return true;
+		if($errno==0 && $rows==1)
+		   return 1;
+		if($errno==0 && $rows==0)
+		   return 0;
+		if($errno!=0)
+		   return -1;
+		return -2;
 	}
 
-	function endrePassord($gammelt,$nytt,$nytt2)
+	/*function endrePassord($gammelt,$nytt,$nytt2)
 	{
 	   $db=new sqlConnection();
 	   $gammelt=trim(mysql_real_escape_string($gammelt,$db->getLink()));

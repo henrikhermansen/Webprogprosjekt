@@ -20,7 +20,7 @@ if(!isset($_POST['nykunde']) || $error)
 {
 ?>
 
-<form action="index.php?side=nykunde" method="POST" name="nykundeSkjema" onSubmit="return validerAlle()">
+<form action="index.php?side=nykunde" method="POST" name="kundeSkjema" onSubmit="return validerAlle()">
 <p>
 	<label for="fornavn">Fornavn</label>
 	<span>
