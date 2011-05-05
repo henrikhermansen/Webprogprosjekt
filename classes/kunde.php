@@ -44,7 +44,7 @@ class Kunde extends BasicKunde
 		return true;
 	}
 
-	function endreKunde($fornavn,$etternavn,$adresse,$postnr,$telefonnr,$epost)
+	function endreKunde($fornavn,$etternavn,$adresse,$postnr,$telefonnr)
 	{
 	   $db=new sql();
 		$error['fornavn']=$this->setFornavn(renStreng($fornavn,$db));
@@ -52,7 +52,6 @@ class Kunde extends BasicKunde
 		$error['adresse']=$this->setAdresse(renStreng($adresse,$db));
 		$error['postnr']=$this->setPostnr(renStreng($postnr,$db),$db);
 		$error['telefonnr']=$this->setTelefonnr(renStreng($telefonnr,$db));
-		$error['epost']=$this->setEpost(renStreng($epost,$db),$db);
 		$db->close();
 		return $error;
 	}
@@ -65,10 +64,9 @@ class Kunde extends BasicKunde
 	   $adresse=$this->adresse;
 	   $postnr=$this->postnr;
 	   $telefonnr=$this->telefonnr;
-	   $epost=$this->epost;
 
 		$db=new sql();
-		$resultat=$db->query("UPDATE webprosjekt_kunde SET fornavn='$fornavn',etternavn='$etternavn',adresse='$adresse',postnr='$postnr',telefonnr='$telefonnr',epost='$epost' WHERE KNr='$KNr'");
+		$resultat=$db->query("UPDATE webprosjekt_kunde SET fornavn='$fornavn',etternavn='$etternavn',adresse='$adresse',postnr='$postnr',telefonnr='$telefonnr' WHERE KNr='$KNr'");
 		$errno=$db->errno;
 		$rows=$db->affected_rows;
 		$db->close();

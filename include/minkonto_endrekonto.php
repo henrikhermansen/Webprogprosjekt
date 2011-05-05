@@ -5,7 +5,7 @@
 <?php
 if($_POST['endrekunde']=="Endre kundeinfo")
 {
-	$feilmeldinger=$kunde->endreKunde($_POST['fornavn'],$_POST['etternavn'],$_POST['adresse'],$_POST['postnr'],$_POST['telefonnr'],$_POST['epost']);
+	$feilmeldinger=$kunde->endreKunde($_POST['fornavn'],$_POST['etternavn'],$_POST['adresse'],$_POST['postnr'],$_POST['telefonnr']);
 	$error=false;
 	foreach($feilmeldinger as $value)
 	   if($value!=null)
@@ -30,6 +30,8 @@ if($_POST['endrekunde']=="Endre kundeinfo")
 if($_POST['endrekunde']!="Endre kundeinfo")
 		foreach($kunde->getInfo() as $key=>$value)
 		   $_POST[$key]=$value;
+		   
+$_POST['epost']=$kunde->getEpost();
 ?>
 
 <form action="index.php?side=minkonto&amp;kontoside=endrekonto" method="POST" name="kundeSkjema" onSubmit="return validerAlle()">
@@ -85,11 +87,8 @@ if($_POST['endrekunde']!="Endre kundeinfo")
 <p>
 	<label for="epost">E-post</label>
 	<span>
-		<input type="text" name="epost" id="epost" maxlength="100" value="<?php echo $_POST['epost']; ?>" required onKeyUp="validerEpost()">
+		<input type="text" name="epost" id="epost" maxlength="100" value="<?php echo $_POST['epost']; ?>" disabled>
 	</span>
-</p>
-<p id="feilEpost" class="feilmelding" style="display:<?php echo $feilmeldinger['epost']==null?"none":"block";?>">
-	<span><?php echo $feilmeldinger['epost']; ?></span>
 </p>
 <p>
 	<input type="submit" name="endrekunde" id="endrekunde" value="Endre kundeinfo">
