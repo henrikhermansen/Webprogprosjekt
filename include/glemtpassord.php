@@ -40,7 +40,7 @@ if(isset($_POST['send']))
                 $dbPassord=cryptPass($passord,$KNr.$epost);
                 $resultat=$db->query("UPDATE webprosjekt_kunde SET Passord='$dbPassord' WHERE KNr='$KNr'");
 		if($db->affected_rows == 0)
-			die("<p class=\"feilmelding\">Feil - fant ikke kunde i databasen (012)</p>");
+			die("<p class=\"feilmelding\">Ukjent databasefeil (012)</p>");
 		$db->close();
 
                 $emne="Nytt passord i Nettbutikken";
