@@ -8,7 +8,7 @@ date_default_timezone_set('Europe/Oslo');
 $gjennomIndex=true;
 
 $side=str_replace("/","",$_REQUEST['side']);
-$denied_includes=array("","side_handlekurv","sessionExpired"); // Sider som ikke skal kunne vises som andre sider
+$denied_includes=array("","side_handlekurv"); // Sider som ikke skal kunne vises som andre sider
 
 require_once"_functions.php";
 require_once"_classes.php";
@@ -42,8 +42,8 @@ if(isset($_SESSION['admin']))   // Innlogget admin
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="stylesheet" type="text/css" href="nettbutikk.css" title="Standard css" />
 <title>Nettbutikk</title>
-<?php if($side=="nykunde") echo"<script type=\"text/javascript\" src=\"js/poststed.js\"></script>"; ?>
-<?php if($side=="nykunde" || $side=="minkonto") echo"<script type=\"text/javascript\" src=\"js/kundeFeltValidering.js\"></script>"; ?>
+<?php if($side=="nykunde" || ($side=="minkonto" && $_REQUEST['kontoside']=="endrekonto")) echo"<script type=\"text/javascript\" src=\"js/poststed.js\"></script>"; ?>
+<?php if($side=="nykunde" || ($side=="minkonto" && $_REQUEST['kontoside']=="endrekonto")) echo"<script type=\"text/javascript\" src=\"js/kundeFeltValidering.js\"></script>"; ?>
 <?php if($side=="kontakt") echo"<script type=\"text/javascript\" src=\"js/kontaktValidering.js\"></script>"; ?>
 <?php if($side=="admlogginn") echo"<script type=\"text/javascript\" src=\"js/admloginValidering.js\"></script>"; ?>
 </head>

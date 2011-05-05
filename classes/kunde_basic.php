@@ -64,6 +64,19 @@ class BasicKunde
 		return null;
 	}
 	
+	function getInfo()
+	{
+		return array(
+		"KNr"=>$this->KNr,
+		"fornavn"=>$this->fornavn,
+		"etternavn"=>$this->etternavn,
+		"adresse"=>$this->adresse,
+		"postnr"=>$this->postnr,
+		"poststed"=>$this->poststed,
+		"telefonnr"=>$this->telefonnr,
+		"epost"=>$this->epost);
+}
+	
 	function getFornavn()	{ return $this->fornavn; }
 	function getEtternavn()	{ return $this->etternavn; }
 	function getNavn()		{ return $this->fornavn." ".$this->etternavn; }
