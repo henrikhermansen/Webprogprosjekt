@@ -47,6 +47,9 @@ form input[type=checkbox] {width:60px;}
 form input[type=submit],form input[type=button] {padding:3px;width:150px;margin-left:50px;}
 form textarea {width:450px;}
 
+.leggtilvare input[type=submit] {padding:0px;width:60px;margin-left:0px;}
+.leggtilvare input[type=text] {width:30px;}
+
 .feilmelding
 {
 	padding:0.2em;
@@ -75,13 +78,31 @@ form textarea {width:450px;}
     padding: 5px;
     text-decoration: none;
 }
+.varelinje
+{
+    display: table;
+}
 .varebilde
 {
-    width:10em;
-    float:left;
+    display: table-cell;
+    width:100px;
+    vertical-align: top;
+    background: #cc6655;
 }
 .pris
 {
-    width:10em;
-    float:right;
+    display: table-cell;
+    width:100px;
+    vertical-align: top;
+    background: #cc6600;
 }
+.pris p {margin:0;}
+.varetekst
+{
+    display: table-cell;
+    width: 500px;
+    vertical-align: top;
+    background: #cc0055;
+    
+}
+.varetekst h3 {margin:0;}
