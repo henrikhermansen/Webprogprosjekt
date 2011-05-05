@@ -21,23 +21,17 @@
 </ul>
 <hr/>
 <ul>
+	<li><a href="index.php?side=kontakt">Kontakt oss</a></li>
 	<?php if((!isset($kunde) && !isset($admin)) || $side=="loggut") {?>
 		<li><a href="index.php?side=logginn">Logg inn</a></li>
 		<li><a href="index.php?side=nykunde">Ny kunde</a></li>
+		<li><a href="index.php?side=admlogginn">Administrator</a></li>
 	<?php } else if(isset($kunde)) {?>
 		<li><a href="index.php?side=minkonto">Min konto</a></li>
 		<li><a href="index.php?side=loggut">Logg ut</a></li>
-	<?php } ?>
-	<li><a href="index.php?side=kontakt">Kontakt oss</a></li>
-	<?php if ((!isset($kunde) && !isset($admin)) || $side=="loggut") {?>
-		<li><a href="index.php?side=admlogginn">Administrator</a></li>
-	<?php }?>
-</ul>
-<?php if(isset($admin) && $side != "loggut") {?>
-	<hr/>
-	<ul>
+	<?php } else if(isset($admin)) {?>
 		<li><a href="index.php?side=admin_ordre">Ordre</a></li>
 		<li><a href="index.php?side=admin_varer">Varer</a></li>
 		<li><a href="index.php?side=loggut">Logg ut</a></li>
-	</ul>
-<?php }?>
+	<?php } ?>
+</ul>

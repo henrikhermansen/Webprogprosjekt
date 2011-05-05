@@ -28,7 +28,7 @@ class Kunde extends BasicKunde
 		$this->etternavn=$brukerinfo['Etternavn'];
 		$this->adresse=$brukerinfo['Adresse'];
 		$this->postnr=$brukerinfo['PostNr'];
-                $this->poststed=sjekkPostnr($this->postnr);
+		$this->poststed=sjekkPostnr($this->postnr);
 		$this->telefonnr=$brukerinfo['Telefonnr'];
 		$this->epost=$brukerinfo['Epost'];
 		$this->passord=$brukerinfo['Passord'];

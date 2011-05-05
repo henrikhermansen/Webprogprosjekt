@@ -4,11 +4,11 @@ function validerFornavn()
 	if(regEx.test(document.nykundeSkjema.fornavn.value))
 	{
 		document.getElementById("feilFornavn").innerHTML = "";
-		document.getElementById("feilFornavn").setAttribute("class", "");
+		document.getElementById("feilFornavn").setAttribute("style", "display:none");
 		return true;
 	}
 	document.getElementById("feilFornavn").innerHTML = "Fornavn kan kun inneholde bokstaver. Minst to og maks 45.";
-	document.getElementById("feilFornavn").setAttribute("class", "feilmelding");
+	document.getElementById("feilFornavn").setAttribute("style", "display:block");
 	return false;
 }
 
@@ -18,11 +18,11 @@ function validerEtternavn()
 	if(regEx.test(document.nykundeSkjema.etternavn.value))
 	{
 		document.getElementById("feilEtternavn").innerHTML = "";
-		document.getElementById("feilEtternavn").setAttribute("class", "");
+		document.getElementById("feilEtternavn").setAttribute("style", "display:none");
 		return true;
 	}
 	document.getElementById("feilEtternavn").innerHTML = "Etternavn kan kun inneholde bokstaver. Minst to og maks 45.";
-	document.getElementById("feilEtternavn").setAttribute("class", "feilmelding");
+	document.getElementById("feilEtternavn").setAttribute("style", "display:block");
 	return false;
 }
 
@@ -32,11 +32,11 @@ function validerAdresse()
 	if(regEx.test(document.nykundeSkjema.adresse.value))
 	{
 		document.getElementById("feilAdresse").innerHTML = "";
-		document.getElementById("feilAdresse").setAttribute("class", "");
+		document.getElementById("feilAdresse").setAttribute("style", "display:none");
 		return true;
 	}
 	document.getElementById("feilAdresse").innerHTML = "Adresse kan kun inneholde bokstaver, tall, mellomrom og punktum. 2-100 tegn.";
-	document.getElementById("feilAdresse").setAttribute("class", "feilmelding");
+	document.getElementById("feilAdresse").setAttribute("style", "display:block");
 	return false;
 }
 
@@ -46,11 +46,11 @@ function validerTelefonnr()
 	if(regEx.test(document.nykundeSkjema.telefonnr.value))
 	{
 		document.getElementById("feilTelefonnr").innerHTML = "";
-		document.getElementById("feilTelefonnr").setAttribute("class", "");
+		document.getElementById("feilTelefonnr").setAttribute("style", "display:none");
 		return true;
 	}
 	document.getElementById("feilTelefonnr").innerHTML = "Telefonnummer må bestå av 8 siffer.";
-	document.getElementById("feilTelefonnr").setAttribute("class", "feilmelding");
+	document.getElementById("feilTelefonnr").setAttribute("style", "display:block");
 	return false;
 }
 
@@ -63,11 +63,11 @@ function validerPostnr()
 	if(regEx.test(document.nykundeSkjema.postnr.value))
 	{
 		document.getElementById("feilPostnr").innerHTML = "";
-		document.getElementById("feilPostnr").setAttribute("class", "");
+		document.getElementById("feilPostnr").setAttribute("style", "display:none");
 		return true;
 	}
 	document.getElementById("feilPostnr").innerHTML = "Postnummer må bestå av 4 siffer.";
-	document.getElementById("feilPostnr").setAttribute("class", "feilmelding");
+	document.getElementById("feilPostnr").setAttribute("style", "display:block");
 	return false;
 }
 
@@ -77,11 +77,11 @@ function validerEpost()
 	if(regEx.test(document.nykundeSkjema.epost.value))
 	{
 		document.getElementById("feilEpost").innerHTML = "";
-		document.getElementById("feilEpost").setAttribute("class", "");
+		document.getElementById("feilEpost").setAttribute("style", "display:none");
 		return true;
 	}
 	document.getElementById("feilEpost").innerHTML = "Feil format på e-postadressen.";
-	document.getElementById("feilEpost").setAttribute("class", "feilmelding");
+	document.getElementById("feilEpost").setAttribute("style", "display:block");
 	return false;
 }
 

@@ -78,6 +78,7 @@ form textarea {width:450px;}
     padding: 5px;
     text-decoration: none;
 }
+#minkontomeny a:hover {background:#c0c0c0;}
 .varelinje
 {
     display: table;
@@ -103,6 +104,6 @@ form textarea {width:450px;}
     width: 500px;
     vertical-align: top;
     background: #cc0055;
-    
+
 }
 .varetekst h3 {margin:0;}
