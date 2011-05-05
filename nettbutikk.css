@@ -75,3 +75,13 @@ form textarea {width:450px;}
     padding: 5px;
     text-decoration: none;
 }
+.varebilde
+{
+    width:10em;
+    float:left;
+}
+.pris
+{
+    width:10em;
+    float:right;
+}
