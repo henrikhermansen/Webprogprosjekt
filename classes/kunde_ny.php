@@ -37,7 +37,6 @@ class NyKunde extends BasicKunde
 		if($db->affected_rows<1)
 		   return"<p class=\"feilmelding\">Databasefeil ved registrering av ny bruker. Vennligst forsøk på nytt eller ta kontakt med supporten. (Errno NK01)</p>";
 	   $passord=genPassord();
-	   $passord="testpassord"; // FJERNES NÅR BRUKEREN KAN ENDRE PASSORD!
 	   $dbPassord=cryptPass($passord,$KNr.$epost);
 	   $resultat=$db->query("UPDATE webprosjekt_kunde SET Passord='$dbPassord' WHERE KNr='$KNr'");
 		if($db->affected_rows<1)
