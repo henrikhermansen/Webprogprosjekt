@@ -4,6 +4,8 @@ class Ordre
 {
     private $OrdreNr, $KNr, $OrdreDato;
 
+    // Må kalle new Ordre($OrdreNr) for å hente eksisterende ordre
+    // eller new Ordre(false,$KNr) for å opprette ny ordre.
     function  __construct($OrdreNr, $KNr=false)
     {
         if(!$KNr) //Henter frem eksisterende ordre
