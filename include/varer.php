@@ -22,6 +22,9 @@ else
 
 echo "<h2>".$katnavn."</h2>";
 
+if(isset($_POST["leggtilhandlekurv"]))
+	echo $handlekurv->leggTilVare($_POST['vnr'],$_POST['antall']);
+
 $vareliste = getVarer($kategori);
 
 if(count($vareliste) == 0)
@@ -50,13 +53,6 @@ else
                 </form>
                 </div>";
         echo "<hr/>";
-    }
-
-    if(isset($_POST["leggtilhandlekurv"]))
-    {
-        $vnr=$_POST[$vnr];
-        $antall=$_POST["antall"];
-        $kunde->leggTilVare($vnr, $antall);
     }
 ?>
 

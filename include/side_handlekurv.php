@@ -1,5 +1,5 @@
-<?php
-echo "<h3>Handlekurv</h3>";
+<?php if(!$gjennomIndex) die("Access denied.");?>
 
-echo "<p>Du har ingen elementer i din handlekurv</p>";
-?>
+<h3>Handlekurv</h3>
+
+<?php echo $handlekurv->visHandlekurv(); ?>

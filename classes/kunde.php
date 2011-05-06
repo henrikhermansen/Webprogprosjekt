@@ -115,17 +115,17 @@ class Kunde extends BasicKunde
 		return "<p class=\"feilmelding\">Vi beklager! En ukjent feil har oppstått ved endring av passord. (EP03)</p>";
 	}
 
-        function getAlleOrdre()
-        {
-            $db = new sql();
-            $resultat = $db->query("SELECT OrdreNr FROM webprosjekt_ordre WHERE KNr = '$this->KNr' ORDER BY OrdreDato DESC;");
-            $rader = $db->affected_rows;
-            $db->close();
-            $ordrenummer;
-            while($rad = $resultat->fetch_assoc())
-                $ordrenummer[] = $rad['OrdreNr'];
-            return $ordrenummer;
-        }
+	function getAlleOrdre()
+	{
+		$db = new sql();
+		$resultat = $db->query("SELECT OrdreNr FROM webprosjekt_ordre WHERE KNr = '$this->KNr' ORDER BY OrdreDato DESC;");
+		$rader = $db->affected_rows;
+		$db->close();
+		$ordrenummer;
+		while($rad = $resultat->fetch_assoc())
+			$ordrenummer[] = $rad['OrdreNr'];
+		return $ordrenummer;
+	}
 }
 
 ?>

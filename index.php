@@ -15,7 +15,7 @@ $require_admin=array("","admin_kunder","admin_legg_til_ny_vare","admin_ordre","a
 require_once"_functions.php";
 require_once"_classes.php";
 
-if(isset($_SESSION['kunde']))   // Innlogget kunde
+if(isset($_SESSION['kunde']) && $side!="loggut")   // Innlogget kunde
 {
 	$kunde=unserialize($_SESSION['kunde']);
 	if($kunde->refreshSession())	// Hvis session ikke har gått ut på tid
@@ -26,7 +26,7 @@ if(isset($_SESSION['kunde']))   // Innlogget kunde
 		$side="sessionExpired";
 	}
 }
-if(isset($_SESSION['admin']))   // Innlogget admin
+if(isset($_SESSION['admin']) && $side!="loggut")   // Innlogget admin
 {
 	$admin = unserialize($_SESSION['admin']);
 	if($admin->refreshSession())	// Hvis session ikke har gått ut på tid
@@ -37,6 +37,14 @@ if(isset($_SESSION['admin']))   // Innlogget admin
 		$side = "sessionExpired";
 	}
 }
+
+if(isset($_SESSION['handlekurv']))
+	$handlekurv=unserialize($_SESSION['handlekurv']);
+else
+	$handlekurv=new Handlekurv();
+
+if($_REQUEST['tomkurv']==true)
+	$handlekurv->tomHandlekurv();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -77,11 +85,7 @@ if(isset($_SESSION['admin']))   // Innlogget admin
 	?>
 </div>
 
-<div id="r_meny">
-	<?php
-	include "include/side_handlekurv.php";
-	?>
-</div>
+<div id="r_meny"><?php include "include/side_handlekurv.php"; ?></div>
 
 </body>
 </html>
