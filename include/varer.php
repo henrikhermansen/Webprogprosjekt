@@ -4,22 +4,20 @@
 $kategori = $_REQUEST['kat'];
 $katnavn;
 
-switch ($kategori)
+if($kategori == 0)
 {
-    case 0: $katnavn = "Alle kategorier";
-            break;
-    case 1: $katnavn = "Speilreflekskamera";
-            break;
-    case 2: $katnavn = "Superzoomkamera";
-            break;
-    case 3: $katnavn = "Kompaktkamera";
-            break;
-    case 4: $katnavn = "Undervannskamera";
-            break;
-    case 5: $katnavn = "Objektiv";
-            break;
-    case 6: $katnavn = "Tilbeh&oslash;r";
-            break;
+    $katnavn = "Alle kategorier";
+}
+else
+{
+    $db = new sql();
+    $resultat = $db->query("SELECT * FROM webprosjekt_kategori where KatNr='$kategori';");
+    if($db->affected_rows == 0)
+            die("Feil (001)");
+    while($rad = $resultat->fetch_assoc())
+            if(!$katnavn=$rad["Navn"])
+                echo"Kategorien finnes ikke";
+    $db->close();
 }
 
 echo "<h2>".$katnavn."</h2>";
