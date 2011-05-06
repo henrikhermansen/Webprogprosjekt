@@ -34,17 +34,27 @@ else
         $vnr = $varer[1];
         $varenavn = substr($varer[2], 0, 50);
         $beskrivelse = substr($varer[3], 0, 300);
-        $pris = number_format($varer[4],2,',','.');
+        $pris = (number_format($varer[4],2,',','.'))."&nbsp";
 
         if(!is_file($bildeurl))
            $bildeurl = "images/standardbilde.jpg";
-        echo "<div class='varebilde'><img src='$bildeurl' alt='$varenavn' /></div>
+        echo "<div class='varebilde'><img src='$bildeurl' alt='$varenavn' width='100' height='100' /></div>
                 <div class='varetekst'>
-                <p>$vnr</p>
                 <h3><a href='index.php?vareinfo&amp;vnr=".$vnr."'>$varenavn</a></h3>
                 <p>$beskrivelse</p>
                 </div>
-                <div class='pris'><p>$pris</p></div>";
+                <div class='pris'><p><b>$pris</b></p><br/>
+                <form class='leggtilvare' action='' method='post' >
+                    <input type='text' name='antall' value=1 />
+                    <input type='submit' name=leggtilhandlekurv value='Legg til' />
+                </form>
+                </div>";
+        echo "<hr/>";
+    }
+
+    if(isset($_REQUEST["leggtilhandlekurv"]))
+    {
+        
     }
 ?>
 
