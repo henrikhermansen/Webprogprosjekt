@@ -36,7 +36,7 @@ else
         $pris = (number_format($varer[4],2,',','.'))."&nbsp";
 
         if(!is_file($bildeurl))
-           $bildeurl = "images/standardbilde.jpg";
+           $bildeurl = "images/noimage.gif";
         echo "<div class='varebilde'><img src='$bildeurl' alt='$varenavn' width='100' height='100' /></div>
                 <div class='varetekst'>
                 <h3><a href='index.php?vareinfo&amp;vnr=".$vnr."'>$varenavn</a></h3>
