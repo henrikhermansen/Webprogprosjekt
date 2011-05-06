@@ -48,7 +48,7 @@ else
                 <div class='pris'><p><b>$pris</b></p><br/>
                 <form class='leggtilvare' action='' method='post' >
                     <input type='hidden' name='vnr' value='$vnr' >
-                    <input type='text' name='antall' value=1 />
+                    <input type='text' name='antall' value=1 maxlength=4 />
                     <input type='submit' name=leggtilhandlekurv value='Legg til' />
                 </form>
                 </div>";
