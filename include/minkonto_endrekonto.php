@@ -90,6 +90,9 @@ $_POST['epost']=$kunde->getEpost();
 		<input type="text" name="epost" id="epost" maxlength="100" value="<?php echo $_POST['epost']; ?>" disabled>
 	</span>
 </p>
+<p id="feilEpost" class="feilmelding" style="display:<?php echo $feilmeldinger['epost']==null?"none":"block";?>">
+	<span><?php echo $feilmeldinger['epost']; ?></span>
+</p>
 <p>
 	<input type="submit" name="endrekunde" id="endrekunde" value="Endre kundeinfo">
 	<input type="reset" name="reset" id="reset" value="Nullstill endringer" onClick="nullstill()">

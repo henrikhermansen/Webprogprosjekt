@@ -32,7 +32,7 @@
 	<?php } else if(isset($admin)) {?>
 		<li><a href="index.php?side=admin_ordre">Ordre</a></li>
 		<li><a href="index.php?side=admin_varer">Varer</a></li>
-                <li><a href="index.php?side=admin_kunder">Kunder</a></li>
+		<li><a href="index.php?side=admin_kunder">Kunder</a></li>
 		<li><a href="index.php?side=loggut">Logg ut</a></li>
 	<?php } ?>
 </ul>

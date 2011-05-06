@@ -45,6 +45,7 @@ form span span {display:inline;}
 form input, form select {width:200px;}
 form input[type=checkbox] {width:60px;}
 form input[type=submit],form input[type=button] {padding:3px;width:150px;margin-left:50px;}
+form input[type=reset] {padding:3px;width:150px;}
 form textarea {width:450px;}
 #glemt {padding-left: 46px;}
 
