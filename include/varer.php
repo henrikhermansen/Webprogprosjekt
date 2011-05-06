@@ -24,8 +24,7 @@ switch ($kategori)
 
 echo "<h2>".$katnavn."</h2>";
 
-$vare = new Vare();
-$vareliste = $vare->getVarer($kategori);
+$vareliste = getVarer($kategori);
 
 if(count($vareliste) == 0)
     echo "<p>Det finnes ingen varer i denne kategorien.</p>";
@@ -47,6 +46,7 @@ else
                 </div>
                 <div class='pris'><p><b>$pris</b></p><br/>
                 <form class='leggtilvare' action='' method='post' >
+                    <input type='hidden' name='vnr' value='$vnr' >
                     <input type='text' name='antall' value=1 />
                     <input type='submit' name=leggtilhandlekurv value='Legg til' />
                 </form>
@@ -54,9 +54,9 @@ else
         echo "<hr/>";
     }
 
-    if(isset($_REQUEST["leggtilhandlekurv"]))
+    if(isset($_POST["leggtilhandlekurv"]))
     {
-        
+        $kunde->leggTilVare($nr, antall);
     }
 ?>
 

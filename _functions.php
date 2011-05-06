@@ -8,5 +8,6 @@ require_once"functions/genPassord.php";
 require_once"functions/now.php";
 require_once"functions/renStreng.php";
 require_once"functions/sjekkPostnr.php";
+require_once"functions/getVarer.php";
 
 ?>
