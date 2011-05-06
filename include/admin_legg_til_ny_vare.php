@@ -1,3 +1,5 @@
+<?php if(!$gjennomIndex) die("Access denied.");?>
+
 <h2>Legg til ny vare</h2>
 
 <form name="ny_vare" action="" method="post">

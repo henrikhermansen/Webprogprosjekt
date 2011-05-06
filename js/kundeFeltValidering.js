@@ -1,6 +1,6 @@
 function validerFornavn()
 {
-	regEx = /^[a-zÃ¦Ã¸Ã¥ ]{2,45}$/i;
+	regEx = /^[a-zæøå ]{2,45}$/i;
 	if(regEx.test(document.kundeSkjema.fornavn.value))
 	{
 		document.getElementById("feilFornavn").innerHTML = "";
@@ -14,7 +14,7 @@ function validerFornavn()
 
 function validerEtternavn()
 {
-	regEx = /^[a-zÃ¦Ã¸Ã¥ ]{2,45}$/i;
+	regEx = /^[a-zæøå ]{2,45}$/i;
 	if(regEx.test(document.kundeSkjema.etternavn.value))
 	{
 		document.getElementById("feilEtternavn").innerHTML = "";
@@ -28,7 +28,7 @@ function validerEtternavn()
 
 function validerAdresse()
 {
-	regEx = /^[a-zÃ¦Ã¸Ã¥0-9. ]{2,100}$/i;
+	regEx = /^[a-zæøå0-9. ]{2,100}$/i;
 	if(regEx.test(document.kundeSkjema.adresse.value))
 	{
 		document.getElementById("feilAdresse").innerHTML = "";
@@ -49,7 +49,7 @@ function validerTelefonnr()
 		document.getElementById("feilTelefonnr").setAttribute("style", "display:none");
 		return true;
 	}
-	document.getElementById("feilTelefonnr").innerHTML = "Telefonnummer mÃ¥ bestÃ¥ av 8 siffer.";
+	document.getElementById("feilTelefonnr").innerHTML = "Telefonnummer må bestå av 8 siffer.";
 	document.getElementById("feilTelefonnr").setAttribute("style", "display:block");
 	return false;
 }
@@ -66,21 +66,21 @@ function validerPostnr()
 		document.getElementById("feilPostnr").setAttribute("style", "display:none");
 		return true;
 	}
-	document.getElementById("feilPostnr").innerHTML = "Postnummer mÃ¥ bestÃ¥ av 4 siffer.";
+	document.getElementById("feilPostnr").innerHTML = "Postnummer må bestå av 4 siffer.";
 	document.getElementById("feilPostnr").setAttribute("style", "display:block");
 	return false;
 }
 
 function validerEpost()
 {
-	regEx = /^[A-ZÃ†Ã˜Ã…0-9._%+-]+@[A-ZÃ†Ã˜Ã…0-9.-]+\.[A-Z]{2,4}$/i;
+	regEx = /^[A-ZÆØÅ0-9._%+-]+@[A-ZÆØÅ0-9.-]+\.[A-Z]{2,4}$/i;
 	if(regEx.test(document.kundeSkjema.epost.value))
 	{
 		document.getElementById("feilEpost").innerHTML = "";
 		document.getElementById("feilEpost").setAttribute("style", "display:none");
 		return true;
 	}
-	document.getElementById("feilEpost").innerHTML = "Feil format pÃ¥ e-postadressen.";
+	document.getElementById("feilEpost").innerHTML = "Feil format på e-postadressen.";
 	document.getElementById("feilEpost").setAttribute("style", "display:block");
 	return false;
 }
@@ -106,4 +106,17 @@ function nullstill()
 	document.getElementById("feilPostnr").setAttribute("style", "display:none");
 	document.getElementById("feilEpost").innerHTML = "";
 	document.getElementById("feilEpost").setAttribute("style", "display:none");
+}
+
+function validerNyttPassord()
+{
+	if(document.passordSkjema.nyttPass1.value.length>=6)
+	{
+		document.getElementById("feilNyttPass").innerHTML = "";
+		document.getElementById("feilNyttPass").setAttribute("style", "display:none");
+		return true;
+	}
+	document.getElementById("feilNyttPass").innerHTML = "Passordet må bestå av minst 6 tegn.";
+	document.getElementById("feilNyttPass").setAttribute("style", "display:block");
+	return false;
 }

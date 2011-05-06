@@ -1,3 +1,5 @@
+<?php if(!$gjennomIndex) die("Access denied.");?>
+
 <?php
 $kategori = $_REQUEST['kat'];
 $katnavn;

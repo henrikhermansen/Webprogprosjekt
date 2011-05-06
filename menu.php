@@ -26,13 +26,13 @@
 		<li><a href="index.php?side=logginn">Logg inn</a></li>
 		<li><a href="index.php?side=nykunde">Ny kunde</a></li>
 		<li><a href="index.php?side=admlogginn">Administrator</a></li>
-	<?php } else if(isset($kunde)) {?>
+	<?php } if(isset($kunde) && $side!="loggut") {?>
 		<li><a href="index.php?side=minkonto">Min konto</a></li>
-		<li><a href="index.php?side=loggut">Logg ut</a></li>
-	<?php } else if(isset($admin)) {?>
+	<?php } if(isset($admin) && $side!="loggut") {?>
 		<li><a href="index.php?side=admin_ordre">Ordre</a></li>
 		<li><a href="index.php?side=admin_varer">Varer</a></li>
-                <li><a href="index.php?side=admin_kunder">Kunder</a></li>
-		<li><a href="index.php?side=loggut">Logg ut</a></li>
+		<li><a href="index.php?side=admin_kunder">Kunder</a></li>
+	<?php } if((isset($kunde) || isset($admin)) && $side!="loggut") { ?>
+	   <li><a href="index.php?side=loggut">Logg ut</a></li>
 	<?php } ?>
 </ul>

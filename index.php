@@ -8,7 +8,9 @@ date_default_timezone_set('Europe/Oslo');
 $gjennomIndex=true;
 
 $side=str_replace("/","",$_REQUEST['side']);
-$denied_includes=array("","side_handlekurv"); // Sider som ikke skal kunne vises som andre sider
+$denied_includes=array("","side_handlekurv","krev_innlogging","krev_admin","minkonto_oversikt","minkonto_ordre","minkonto_endrekonto","minkonto_endrepassord"); // Sider som ikke skal kunne vises som andre sider
+$require_login=array("","minkonto"); // Sider som kun skal kunne vises til innloggede kunder
+$require_admin=array("","admin_kunder","admin_legg_til_ny_vare","admin_ordre","admin_ordreoversikt","admin_varer"); // Sider som kun skal kunne vises til innloggede administratorer
 
 require_once"_functions.php";
 require_once"_classes.php";
@@ -43,7 +45,7 @@ if(isset($_SESSION['admin']))   // Innlogget admin
 <link rel="stylesheet" type="text/css" href="nettbutikk.css" title="Standard css" />
 <title>Nettbutikk</title>
 <?php if($side=="nykunde" || ($side=="minkonto" && $_REQUEST['kontoside']=="endrekonto")) echo"<script type=\"text/javascript\" src=\"js/poststed.js\"></script>"; ?>
-<?php if($side=="nykunde" || $side=="glemtpassord" ||($side=="minkonto" && $_REQUEST['kontoside']=="endrekonto")) echo"<script type=\"text/javascript\" src=\"js/kundeFeltValidering.js\"></script>"; ?>
+<?php if($side=="nykunde" || $side=="glemtpassord" || ($side=="minkonto" && ($_REQUEST['kontoside']=="endrekonto" || $_REQUEST['kontoside']=="endrepassord"))) echo"<script type=\"text/javascript\" src=\"js/kundeFeltValidering.js\"></script>"; ?>
 <?php if($side=="kontakt") echo"<script type=\"text/javascript\" src=\"js/kontaktValidering.js\"></script>"; ?>
 <?php if($side=="admlogginn") echo"<script type=\"text/javascript\" src=\"js/admloginValidering.js\"></script>"; ?>
 </head>
@@ -60,7 +62,14 @@ if(isset($_SESSION['admin']))   // Innlogget admin
 <div id="innhold">
 	<?php
 	if(is_file("include/".$side.".php") && !array_search($side,$denied_includes))
-		include "include/".$side.".php";
+	{
+	   if(!isset($kunde) && array_search($side,$require_login))
+			include "include/krev_innlogging.php";
+	   elseif(!isset($admin) && array_search($side,$require_admin))
+	      include "include/krev_admin.php";
+		else
+			include "include/$side.php";
+	}
 	else
 		//include(isset($bruker)?"include/bestill.php":"include/login.php");
 		include"include/hjem.php";
