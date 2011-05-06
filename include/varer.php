@@ -33,7 +33,7 @@ else
         $vnr = $varer[1];
         $varenavn = substr($varer[2], 0, 50);
         $beskrivelse = substr($varer[3], 0, 300);
-        $pris = (number_format($varer[4],2,',','.'))."&nbsp";
+        $pris = (number_format($varer[4],2,',','.'));
 
         if(!is_file($bildeurl))
            $bildeurl = "images/standardbilde.jpg";
@@ -54,7 +54,9 @@ else
 
     if(isset($_POST["leggtilhandlekurv"]))
     {
-        $kunde->leggTilVare($nr, antall);
+        $vnr=$_POST[$vnr];
+        $antall=$_POST["antall"];
+        $kunde->leggTilVare($vnr, $antall);
     }
 ?>
 
