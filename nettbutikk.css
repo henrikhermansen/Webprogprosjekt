@@ -91,14 +91,14 @@ form textarea {width:450px;}
     display: table-cell;
     width:100px;
     vertical-align: top;
-    background: #cc6655;
+/*    background: #cc6655;*/
 }
 .pris
 {
     display: table-cell;
     width:100px;
     vertical-align: middle;
-    background: #cc6600;
+/*    background: #cc6600;*/
     text-align: right;
 }
 .pris p {margin:0.4em;}
@@ -107,7 +107,7 @@ form textarea {width:450px;}
     display: table-cell;
     width: 500px;
     vertical-align: top;
-    background: #cc0055;
+/*    background: #cc0055;*/
     padding-left: 1em;
     padding-right: 1em;
 }
