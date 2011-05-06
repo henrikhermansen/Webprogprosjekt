@@ -107,3 +107,16 @@ function nullstill()
 	document.getElementById("feilEpost").innerHTML = "";
 	document.getElementById("feilEpost").setAttribute("style", "display:none");
 }
+
+function validerNyttPassord()
+{
+	if(document.passordSkjema.nyttPass1.value.length>=6)
+	{
+		document.getElementById("feilNyttPass").innerHTML = "";
+		document.getElementById("feilNyttPass").setAttribute("style", "display:none");
+		return true;
+	}
+	document.getElementById("feilNyttPass").innerHTML = "Passordet må bestå av minst 6 tegn.";
+	document.getElementById("feilNyttPass").setAttribute("style", "display:block");
+	return false;
+}

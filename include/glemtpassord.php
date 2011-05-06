@@ -36,7 +36,6 @@ if(isset($_POST['send']))
                 $sendt = true;
                 $KNr = $resultat['KNr'];
                 $passord=genPassord();
-                $passord="testpassord"; // FJERNES NÅR BRUKEREN KAN ENDRE PASSORD!
                 $dbPassord=cryptPass($passord,$KNr.$epost);
                 $resultat=$db->query("UPDATE webprosjekt_kunde SET Passord='$dbPassord' WHERE KNr='$KNr'");
 		if($db->affected_rows == 0)

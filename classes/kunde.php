@@ -20,8 +20,7 @@ class Kunde extends BasicKunde
 		if($rows==0)
 			return false;
 		$brukerinfo=$brukerinfo->fetch_assoc();
-		if($brukerinfo['Passord']!=cryptPass($passord,$brukerinfo['KNr'].$epost)) // Denne linjen skal settes inn igjen når vi begynner med krypterte passord!
-		//if($brukerinfo['Passord']!=$passord)                     // Denne linjen skal FJERNES
+		if($brukerinfo['Passord']!=cryptPass($passord,$brukerinfo['KNr'].$epost))
 		   return false;
 		$this->KNr=$brukerinfo['KNr'];
 		$this->fornavn=$brukerinfo['Fornavn'];
@@ -66,7 +65,7 @@ class Kunde extends BasicKunde
 	   $telefonnr=$this->telefonnr;
 
 		$db=new sql();
-		$resultat=$db->query("UPDATE webprosjekt_kunde SET fornavn='$fornavn',etternavn='$etternavn',adresse='$adresse',postnr='$postnr',telefonnr='$telefonnr' WHERE KNr='$KNr'");
+		$resultat=$db->query("UPDATE webprosjekt_kunde SET Fornavn='$fornavn',Etternavn='$etternavn',Adresse='$adresse',Postnr='$postnr',Telefonnr='$telefonnr' WHERE KNr='$KNr'");
 		$errno=$db->errno;
 		$rows=$db->affected_rows;
 		$db->close();
@@ -79,30 +78,42 @@ class Kunde extends BasicKunde
 		return -2;
 	}
 
-	/*function endrePassord($gammelt,$nytt,$nytt2)
+	function endrePassord($gammelt,$nytt1,$nytt2)
 	{
-	   $db=new sqlConnection();
-	   $gammelt=trim(mysql_real_escape_string($gammelt,$db->getLink()));
-	   $nytt=trim(mysql_real_escape_string($nytt,$db->getLink()));
-	   $nytt2=trim(mysql_real_escape_string($nytt2,$db->getLink()));
+	   $db=new sql();
+	   $gammelt=renStreng($gammelt,$db);
+	   $nytt1=renStreng($nytt1,$db);
+	   $nytt2=renStreng($nytt2,$db);
 	   $db->close();
-		$kryptGammelt=new CryptPass($gammelt,$this->etternavn.$this->fornavn);
-		if($kryptGammelt->getPass()!=$this->passord)
-		   return "<span class=\"skjemafeil\">Feil nåværende passord.</span>";
-		if($nytt!=$nytt2)
-         return "<span class=\"skjemafeil\">Passordene du skrev var ikke like.</span>";
-		if(!(strlen($nytt)>=6))
-		   return "<span class=\"skjemafeil\">Passordet må være på minst 6 tegn.</span>";
+		$gammelt=cryptPass($gammelt,$this->KNr.$this->epost);
+		if($gammelt!=$this->passord)
+		   return "<p class=\"feilmelding\">Feil nåværende passord.</p>";
+		if($nytt1!=$nytt2)
+         return "<p class=\"feilmelding\">Passordene du skrev var ikke like.</p>";
+		if(strlen($nytt1)<6)
+		   return "<p class=\"feilmelding\">Passordet må være minst 6 tegn.</p>";
 
-		$kryptNytt=new CryptPass($nytt,$this->etternavn.$this->fornavn);
-		$db=new sqlConnection();
-		$resultat=$db->update("brukere","passord='".$kryptNytt->getPass()."'","id=".$this->id);
-		if(!(is_bool($resultat) && $resultat==true))
-			return "<span class=\"skjemafeil\">Databasefeil ved lagring av nytt passord. Vennligst prøv igjen eller kontakt Henrik.</span>";
-		$this->passord=$kryptNytt->getPass();
-		$_SESSION['bruker']=serialize($this);
-		return "<span class=\"skjemaOk\">Passordet ditt ble endret.</span>";
-	}*/
+		$nytt=cryptPass($nytt1,$this->KNr.$this->epost);
+		if($gammelt==$nytt)
+		   return "<p class=\"okmelding\">Passordet har blitt endret.</p>";
+		$db=new sql();
+		$KNr=$this->KNr;
+		$resultat=$db->query("UPDATE webprosjekt_kunde SET Passord='$nytt' WHERE KNr='$KNr'");
+		$errno=$db->errno;
+		$rows=$db->affected_rows;
+		$db->close();
+		if($errno==0 && $rows==1)
+		{
+		   $this->passord=$nytt;
+		   $_SESSION['kunde']=serialize($this);
+		   return "<p class=\"okmelding\">Passordet har blitt endret.</p>";
+		}
+		if($errno==0 && $rows==0)
+		   return "<p class=\"feilmelding\">Vi beklager! En ukjent feil har oppstått ved endring av passord. (EP01)</p>";
+		if($errno!=0)
+		   return "<p class=\"feilmelding\">Vi beklager! En feil har oppstått ved endring av passord. (EP02)</p>";
+		return "<p class=\"feilmelding\">Vi beklager! En ukjent feil har oppstått ved endring av passord. (EP03)</p>";
+	}
 
         function getAlleOrdre()
         {

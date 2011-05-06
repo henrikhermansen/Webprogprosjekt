@@ -6,6 +6,7 @@
     <a href="index.php?side=minkonto&amp;kontoside=oversikt">Oversikt</a>
     <a href="index.php?side=minkonto&amp;kontoside=ordre">Mine ordre</a>
     <a href="index.php?side=minkonto&amp;kontoside=endrekonto">Endre kontoinformasjon</a>
+    <a href="index.php?side=minkonto&amp;kontoside=endrepassord">Endre passord</a>
 </p>
 
 <?php
@@ -19,6 +20,8 @@ if(isset($_REQUEST['kontoside']))
         case ordre:     include "include/minkonto_ordre.php";
                         break;
         case endrekonto: include "include/minkonto_endrekonto.php";
+                        break;
+        case endrepassord: include "include/minkonto_endrepassord.php";
                         break;
     }
 }

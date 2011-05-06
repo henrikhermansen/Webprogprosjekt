@@ -79,6 +79,7 @@ form textarea {width:450px;}
     background: #cccccc;
     padding: 5px;
     text-decoration: none;
+    text-align:center;
 }
 #minkontomeny a:hover {background:#c0c0c0;}
 .varelinje

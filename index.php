@@ -43,7 +43,7 @@ if(isset($_SESSION['admin']))   // Innlogget admin
 <link rel="stylesheet" type="text/css" href="nettbutikk.css" title="Standard css" />
 <title>Nettbutikk</title>
 <?php if($side=="nykunde" || ($side=="minkonto" && $_REQUEST['kontoside']=="endrekonto")) echo"<script type=\"text/javascript\" src=\"js/poststed.js\"></script>"; ?>
-<?php if($side=="nykunde" || $side=="glemtpassord" ||($side=="minkonto" && $_REQUEST['kontoside']=="endrekonto")) echo"<script type=\"text/javascript\" src=\"js/kundeFeltValidering.js\"></script>"; ?>
+<?php if($side=="nykunde" || $side=="glemtpassord" || ($side=="minkonto" && ($_REQUEST['kontoside']=="endrekonto" || $_REQUEST['kontoside']=="endrepassord"))) echo"<script type=\"text/javascript\" src=\"js/kundeFeltValidering.js\"></script>"; ?>
 <?php if($side=="kontakt") echo"<script type=\"text/javascript\" src=\"js/kontaktValidering.js\"></script>"; ?>
 <?php if($side=="admlogginn") echo"<script type=\"text/javascript\" src=\"js/admloginValidering.js\"></script>"; ?>
 </head>
