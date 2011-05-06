@@ -61,7 +61,7 @@ class NyKunde extends BasicKunde
 		$resultat = @mail($epost, $emne, $tekst, $hode);
 
 		if($resultat)
-		   return"<p class=\"okemlding\">Brukeren din har nå blitt opprettet. Brukernavn og passord er sendt på e-post til $epost.</p>".
+		   return"<p class=\"okmelding\">Brukeren din har nå blitt opprettet. Brukernavn og passord er sendt på e-post til $epost.</p>".
 				"<p>Du kan nå <a href=\"index.php?side=logginn\">logge inn</a>.</p>";
 		else
 		   return"<p class=\"okmelding\">Brukeren din har nå blitt opprettet.</p>".

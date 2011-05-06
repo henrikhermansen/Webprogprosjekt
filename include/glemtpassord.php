@@ -60,12 +60,10 @@ if(isset($_POST['send']))
 		$resultat = @mail($epost, $emne, $tekst, $hode);
 
 		if($resultat)
-		   echo "<p class=\"okemlding\">Brukeren din har nå blitt opprettet. Brukernavn og passord er sendt på e-post til $epost.</p>".
+		   echo "<p class=\"okmelding\">Du har nå fått tilsendt et nytt passord på e-post til $epost.</p>".
 			"<p>Du kan nå <a href=\"index.php?side=logginn\">logge inn</a>.</p>";
 		else
-		   echo "<p class=\"okmelding\">Brukeren din har nå blitt opprettet.</p>".
-                        "<p>Her er din innloggingsinformasjon:<br>".
-                        "Brukernavn: $epost <br>".
+		   echo "<p class=\"okmelding\">Du har nå fått generert et nytt passord.<br>".
                         "Passord: $passord </p>".
                         "<p>Du kan nå <a href=\"index.php?side=logginn\">logge inn</a>.</p>";
             }
