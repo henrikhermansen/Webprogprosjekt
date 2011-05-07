@@ -11,31 +11,74 @@ root {
 }
 
 body {
-    background: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 80%;
+    background: #cccccc;
+    margin: 0px;
+}
+
+#hovedramme{
+    width: 1000px;
+    min-height: 710px;
+    background: #ddeeff;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #header{
     text-align: center;
-    background: #ff0000;
+    padding-top: 10px;
+    background: #77aaff;
+    height: 100px;
+    font-size: 120%;
 }
 
 #l_meny{
-    background: #ff0000;
-    width: 15em;
+    background: #ddeeff;
+    width: 150px;
     float: left;
+    padding: 10px;
 }
 
 #r_meny{
-    background: #ff0000;
-    width: 15em;
+    background: #ddeeff;
+    width: 150px;
     float: right;
+    padding: 10px;
+}
+#r_meny p, #r_meny li{
+    font-size: 75%;
 }
 
 #innhold{
     background: #ffffff;
-    width: auto;
+    width: 600px;
+    min-height: 570px;
     float: left;
-    padding: 1em;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 0px;
+}
+
+ul{
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+li{
+    padding-bottom: 5px;
+}
+
+a{
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover{
+    color: #ff0000;
 }
 
 form p {display:table;}
@@ -91,24 +134,22 @@ form textarea {width:450px;}
     display: table-cell;
     width:100px;
     vertical-align: top;
-/*    background: #cc6655;*/
 }
 .pris
 {
     display: table-cell;
     width:100px;
     vertical-align: middle;
-/*    background: #cc6600;*/
     text-align: right;
+/*    background: #00ff00;*/
 }
-.pris p {margin:0.4em;}
 .varetekst
 {
     display: table-cell;
-    width: 500px;
+    width: 380px;
     vertical-align: top;
-/*    background: #cc0055;*/
     padding-left: 1em;
     padding-right: 1em;
+/*    background: #ff0000;*/
 }
 .varetekst h3 {margin:0;}
