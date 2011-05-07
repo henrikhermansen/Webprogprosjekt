@@ -54,5 +54,12 @@ else
                 </div>";
         echo "<hr/>";
     }
+
+    if(isset($_POST["leggtilhandlekurv"]))
+    {
+        $vnr=$_POST[$vnr];
+        $antall=$_POST["antall"];
+        $kunde->leggTilVare($vnr, $antall);
+    }
 ?>
 
