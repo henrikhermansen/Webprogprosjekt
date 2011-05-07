@@ -16,15 +16,15 @@ $Antall = $Vare->getAntall();
 //Skriver ut vareinfo
 echo "Varenummer:  ".$vnr."<br/>";
 echo "<div class='Vareinfonavn'><h2>".$Varenavn."</h2></div>";
-echo "<div class='infotab'><div class='Vareinfobilde'><img src='$Bilde' alt='$Varenavn' width='200' height='200' /></div>";
-echo "<div class='vareinfoinfo'><b>Pris:  ".$Pris." NOK<br/></b>";
-echo "P&aring lager:  ".$Antall." stk<br/>";
+echo "<div class='vareinfobeskrivelse'><b>Beskrivelse:</b><br/>".$Beskrivelse."</div>";
+echo "<div class='Vareinfobilde'><img src='$Bilde' alt='$Varenavn' width='200' height='200' /></div>";
+echo "<div class='vareinfopris'><b>Pris:  ".$Pris." NOK<br/></b>";
+echo "P&aring lager:  ".$Antall." stk<br/><br/>";
 echo "<form action='' method='post' >
         <input type='hidden' name='vnr' value='$vnr' >
         <input type='text' name='antall' value=1 maxlength=4 />
         <input type='submit' name=leggtilhandlekurv value='Legg til' />
-    </form></div></div>";
-echo "<div class='vareinfobeskrivelse'><b>Beskrivelse:</b><br/>".$Beskrivelse."</div>";
+    </form></div>";
 
 //for å legge til i handlekurv
 if(isset($_POST["leggtilhandlekurv"]))

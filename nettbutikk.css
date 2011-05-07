@@ -94,6 +94,8 @@ form textarea {width:450px;}
 
 .leggtilvare input[type=submit] {padding:0px;width:60px;margin-left:0px;}
 .leggtilvare input[type=text] {width:30px;}
+.vareinfopris input[type=submit] {padding:0px;width:60px;margin-left:0px;}
+.vareinfopris input[type=text] {width:30px;}
 
 .feilmelding
 {
@@ -154,31 +156,16 @@ form textarea {width:450px;}
 }
 .varetekst h3 {margin:0;}
 
-.infotab
-{
-    display: table;
-}
-.vareinfobilde
-{
-    display: table-cell;
-    width:300px;
-    height: 220px;
-    background: #ff0000;
-}
-
-.vareinfoinfo
-{
-    display: table-cell;
-    width:100px;
-    vertical-align: middle;
-    background: #cc6600;
-    text-align: right;
-}
-
 .vareinfobeskrivelse
 {
-    vertical-align: middle;
+    float:right;
     padding-left: 1em;
     padding-right: 1em;
-    background: #cc0355;
 }
+
+.vareinfopris
+{
+    width:150px;
+    float:right;
+}
+
