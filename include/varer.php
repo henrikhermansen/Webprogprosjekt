@@ -13,7 +13,7 @@ else
     $db = new sql();
     $resultat = $db->query("SELECT * FROM webprosjekt_kategori where KatNr='$kategori';");
     if($db->affected_rows == 0)
-            die("Feil (001)");
+            die("Feil (B03)");
     while($rad = $resultat->fetch_assoc())
             if(!$katnavn=$rad["Navn"])
                 echo"Kategorien finnes ikke";
@@ -42,7 +42,7 @@ else
            $bildeurl = "images/noimage.gif";
         echo "<div class='varebilde'><img src='$bildeurl' alt='$varenavn' width='100' height='100' /></div>
                 <div class='varetekst'>
-                <h3><a href='index.php?vareinfo&amp;vnr=".$vnr."'>$varenavn</a></h3>
+                <h3><a href='index.php?side=vareinfo&amp;vnr=".$vnr."'>$varenavn</a></h3>
                 <p>$beskrivelse</p>
                 </div>
                 <div class='pris'><p><b>$pris</b></p><br/>

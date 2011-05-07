@@ -112,3 +112,32 @@ form textarea {width:450px;}
     padding-right: 1em;
 }
 .varetekst h3 {margin:0;}
+
+.infotab
+{
+    display: table;
+}
+.vareinfobilde
+{
+    display: table-cell;
+    width:300px;
+    height: 220px;
+    background: #ff0000;
+}
+
+.vareinfoinfo
+{
+    display: table-cell;
+    width:100px;
+    vertical-align: middle;
+    background: #cc6600;
+    text-align: right;
+}
+
+.vareinfobeskrivelse
+{
+    vertical-align: middle;
+    padding-left: 1em;
+    padding-right: 1em;
+    background: #cc0355;
+}
