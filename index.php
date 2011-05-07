@@ -51,7 +51,7 @@ if($_REQUEST['tomkurv']==true)
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="stylesheet" type="text/css" href="nettbutikk.css" title="Standard css" />
-<title>Nettbutikk</title>
+<title>HBHL nettbutikk</title>
 <?php if($side=="nykunde" || ($side=="minkonto" && $_REQUEST['kontoside']=="endrekonto")) echo"<script type=\"text/javascript\" src=\"js/poststed.js\"></script>"; ?>
 <?php if($side=="nykunde" || $side=="glemtpassord" || ($side=="minkonto" && ($_REQUEST['kontoside']=="endrekonto" || $_REQUEST['kontoside']=="endrepassord"))) echo"<script type=\"text/javascript\" src=\"js/kundeFeltValidering.js\"></script>"; ?>
 <?php if($side=="kontakt") echo"<script type=\"text/javascript\" src=\"js/kontaktValidering.js\"></script>"; ?>
@@ -59,8 +59,10 @@ if($_REQUEST['tomkurv']==true)
 </head>
 <body>
 
+<div id="hovedramme">
+
 <div id="header">
-    <h1>Nettbutikken v&aring;r</h1>
+    <h1><a href="index.php?side=hjem">HBHL nettbutikk</a></h1>
 </div>
 
 <div id="l_meny">
@@ -87,5 +89,6 @@ if($_REQUEST['tomkurv']==true)
 
 <div id="r_meny"><?php include "include/side_handlekurv.php"; ?></div>
 
+</div>
 </body>
 </html>

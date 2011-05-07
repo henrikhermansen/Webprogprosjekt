@@ -40,7 +40,7 @@ else
 
         if(!is_file($bildeurl))
            $bildeurl = "images/noimage.gif";
-        echo "<div class='varebilde'><img src='$bildeurl' alt='$varenavn' width='100' height='100' /></div>
+        echo "<div class='varebilde'><img src='$bildeurl' alt='$varenavn' height='100' /></div>
                 <div class='varetekst'>
                 <h3><a href='index.php?side=vareinfo&amp;vnr=".$vnr."'>$varenavn</a></h3>
                 <p>$beskrivelse</p>
@@ -53,13 +53,6 @@ else
                 </form>
                 </div>";
         echo "<hr/>";
-    }
-
-    if(isset($_POST["leggtilhandlekurv"]))
-    {
-        $vnr=$_POST[$vnr];
-        $antall=$_POST["antall"];
-        $kunde->leggTilVare($vnr, $antall);
     }
 ?>
 
