@@ -159,16 +159,21 @@ form textarea {width:450px;}
 .vareinfobilde
 {
     float:left;
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 .vareinfobeskrivelse
 {
-/*    float:left;*/
+    float:left;
     padding-left: 1em;
     padding-right: 1em;
 }
 
 .vareinfopris
 {
+    margin-top: 25px;
     width:150px;
     float:right;
 }
