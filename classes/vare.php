@@ -10,12 +10,22 @@ class Vare
      * Konstruktør for å legge til vare og hente ut info om vare med gitt varenummer.
      *
      */
+    function nyVare()
+    {
+        $varenavn=  $this->Varenavn;
+        $pris=  $this->Pris;
+        $beskrivelse=  $this->Beskrivelse;
+        $bilde=  $this->Bilde;
+        $katNr=  $this->KatNr;
+        $antall=  $this->Antall;
+    }
     function  __construct($VNr = false)
     {
         if(!VNr) //Legger til vare
         {
             $db = new sql();
-            $resultat = $db->query("INSERT INTO webprosjekt_vare(VNr, Varenavn, Pris, Beskrivelse, Bilde, KatNr, Antall) VALUES('$VNr','$Varenavn','$Pris','$Beskrivelse','$Bilde','$KatNr','$Antall')");
+            $resultat = $db->query("INSERT INTO webprosjekt_vare(Varenavn, Pris, Beskrivelse, Bilde, KatNr, Antall)
+                                                                VALUES($Varenavn','$Pris','$Beskrivelse','$Bilde','$KatNr','$Antall')");
             if($db->affected_rows == 0)
                 die("Feil - kunne ikke sette inn vare i databasen (B05)");
             $db->close();
