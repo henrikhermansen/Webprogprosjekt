@@ -10,6 +10,15 @@ class Vare
      * Konstruktør for å legge til vare og hente ut info om vare med gitt varenummer.
      *
      */
+    function nyVare()
+    {
+        $varenavn=  $this->Varenavn;
+        $pris=  $this->Pris;
+        $beskrivelse=  $this->Beskrivelse;
+        $bilde=  $this->Bilde;
+        $katNr=  $this->KatNr;
+        $antall=  $this->Antall;
+    }
     function  __construct($VNr = false)
     {
         if($Vnr) //henter ut info om varen
