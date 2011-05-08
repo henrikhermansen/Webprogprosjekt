@@ -156,9 +156,13 @@ form textarea {width:450px;}
 }
 .varetekst h3 {margin:0;}
 
+.vareinfobilde
+{
+    float:left;
+}
 .vareinfobeskrivelse
 {
-    float:right;
+/*    float:left;*/
     padding-left: 1em;
     padding-right: 1em;
 }

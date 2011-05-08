@@ -15,10 +15,10 @@ $Antall = $Vare->getAntall();
 
 //Skriver ut vareinfo
 echo "Varenummer:  ".$vnr."<br/>";
-echo "<div class='Vareinfonavn'><h2>".$Varenavn."</h2></div>";
-echo "<div class='vareinfobeskrivelse'><b>Beskrivelse:</b><br/>".$Beskrivelse."</div>";
-echo "<div class='Vareinfobilde'><img src='$Bilde' alt='$Varenavn' width='200' height='200' /></div>";
-echo "<div class='vareinfopris'><b>Pris:  ".$Pris." NOK<br/></b>";
+echo "<div class='vareinfonavn'><h2>".$Varenavn."</h2></div>";
+echo "<div class='vareinfobilde'><img src='$Bilde' alt='$Varenavn' width='200' height='200' /></div>";
+echo "<div class='vareinfobeskrivelse'><b>Beskrivelse:</b><br/><br/>".$Beskrivelse."</div>";
+echo "<div class='vareinfopris'><b><br/>Pris:  ".$Pris." NOK<br/></b>";
 echo "P&aring lager:  ".$Antall." stk<br/><br/>";
 echo "<form action='' method='post' >
         <input type='hidden' name='vnr' value='$vnr' >

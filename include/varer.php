@@ -35,7 +35,8 @@ else
         $bildeurl = $varer[0];
         $vnr = $varer[1];
         $varenavn = substr($varer[2], 0, 50);
-        $beskrivelse = substr($varer[3], 0, 300);
+        $beskrivelse_substring = substr($varer[3], 0, 240);
+        $beskrivelse = str_replace("<br/>", " ", $beskrivelse_substring);
         $pris = (number_format($varer[4],2,',','.'));
 
         if(!is_file($bildeurl))
@@ -43,7 +44,7 @@ else
         echo "<div class='varebilde'><img src='$bildeurl' alt='$varenavn' height='100' /></div>
                 <div class='varetekst'>
                 <h3><a href='index.php?side=vareinfo&amp;vnr=".$vnr."'>$varenavn</a></h3>
-                <p>$beskrivelse</p>
+                <p>$beskrivelse....</p>
                 </div>
                 <div class='pris'><p><b>$pris</b></p><br/>
                 <form class='leggtilvare' action='' method='post' >
