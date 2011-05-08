@@ -12,15 +12,7 @@ class Vare
      */
     function  __construct($VNr = false)
     {
-        if(!VNr) //Legger til vare
-        {
-            $db = new sql();
-            $resultat = $db->query("INSERT INTO webprosjekt_vare(VNr, Varenavn, Pris, Beskrivelse, Bilde, KatNr, Antall) VALUES('$VNr','$Varenavn','$Pris','$Beskrivelse','$Bilde','$KatNr','$Antall')");
-            if($db->affected_rows == 0)
-                die("Feil - kunne ikke sette inn vare i databasen (B05)");
-            $db->close();
-        }
-        else //hent ut info om varen
+        if($Vnr) //henter ut info om varen
         {
             $db = new sql();
             $resultat = $db->query("SELECT * FROM webprosjekt_vare WHERE VNr = '$VNr';");
@@ -37,6 +29,42 @@ class Vare
             $this->KatNr = $resultat['KatNr'];
             $this->Antall = $resultat['Antall'];
         }
+    }
+
+    function setVarenavn($navn)
+    {
+        //kobler til databasen og legger inn $navn
+        $this->Varenavn = $navn;
+    }
+
+    function setPris($pris)
+    {
+        //kobler til databasen og legger inn $pris
+        $this->Pris = $pris;
+    }
+
+    function setBeskrivelse($beskrivelse)
+    {
+        //kobler til databasen og legger inn $beskrivelse
+        $this->Beskrivelse = $beskrivelse;
+    }
+
+    function setBilde($bilde)
+    {
+        //kobler til databasen og legger inn $bilde
+        $this->Bilde = $bilde;
+    }
+
+    function setKatNr($katnr)
+    {
+        //kobler til databasen og legger inn $katnr
+        $this->KatNr = $katnr;
+    }
+
+    function setAntall($antall)
+    {
+        //kobler til databasen og legger inn $antall
+        $this->Antall = $antall;
     }
 
     /**
