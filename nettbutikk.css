@@ -19,7 +19,7 @@ body {
 
 #hovedramme{
     width: 1000px;
-    min-height: 710px;
+    min-height: 700px;
     background: #ddeeff;
     margin-left: auto;
     margin-right: auto;
@@ -29,10 +29,13 @@ body {
 
 #header{
     text-align: center;
-    padding-top: 10px;
-    background: #77aaff;
-    height: 100px;
-    font-size: 120%;
+    padding-top: 5px;
+    background-image: url('images/headerbg.jpg');
+    height: 95px;
+    font-size: 140%;
+}
+#header a{
+    color: #ddeeff;
 }
 
 #l_meny{
@@ -159,16 +162,10 @@ form textarea {width:450px;}
 .vareinfobilde
 {
     float:left;
-    padding-left: 0px;
-    padding-top: 0px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-}
-.vareinfobeskrivelse
-{
-    float:left;
-    padding-left: 1em;
-    padding-right: 1em;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .vareinfopris
