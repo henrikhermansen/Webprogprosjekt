@@ -10,7 +10,7 @@ $gjennomIndex=true;
 $side=str_replace("/","",$_REQUEST['side']);
 $denied_includes=array("","side_handlekurv","krev_innlogging","krev_admin","minkonto_oversikt","minkonto_ordre","minkonto_endrekonto","minkonto_endrepassord"); // Sider som ikke skal kunne vises som andre sider
 $require_login=array("","minkonto","kassen"); // Sider som kun skal kunne vises til innloggede kunder
-$require_admin=array("","admin_kunder","admin_legg_til_ny_vare","admin_ordre","admin_ordreoversikt","admin_varer","admin_endreordre","admin_kategorier"); // Sider som kun skal kunne vises til innloggede administratorer
+$require_admin=array("","admin_kunder","admin_legg_til_ny_vare","admin_ordre","admin_ordreoversikt","admin_varer","admin_endreordre","admin_kategorier","admin_endrevare"); // Sider som kun skal kunne vises til innloggede administratorer
 
 require_once"_functions.php";
 require_once"_classes.php";

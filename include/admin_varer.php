@@ -24,7 +24,7 @@ else
         $varenavn = substr($varer[2], 0, 50);
         $pris = (number_format($varer[4],2,',','.'));
         $antall=$varer[5];
-        echo "<tr><td>$vnr</td><td>$varenavn</td><td>$pris</td><td>$antall</td><td><a href=\"index.php?side=admin_endrevare\">Endre</a></td></tr>\n";
+        echo "<tr><td>$vnr</td><td>$varenavn</td><td>$pris</td><td>$antall</td><td><a href=\"index.php?side=admin_endrevare&amp;vnr=$vnr\">Endre</a></td></tr>\n";
     }
 ?>
 </table>
