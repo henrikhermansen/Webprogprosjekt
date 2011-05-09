@@ -87,6 +87,8 @@ a:hover{
     color: #ff0000;
 }
 
+table {width:100%;}
+
 form p {display:table;}
 form label {display:table-cell;width:250px;}
 form span {display:table-cell;}

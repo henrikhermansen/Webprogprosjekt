@@ -27,8 +27,8 @@ if(isset ($_POST['knapp']))
 if(!$innlogget)
 {?>
 <form name="alogin" action="" method="post">
-    <p><label>Brukernavn</label><input type="text" name="bnavn" /></p>
-    <p><label>Passord</label><input type="password" name="pord" /></p>
+    <p><label for="bnavn">Brukernavn</label><input type="text" name="bnavn" id="bnavn" /></p>
+    <p><label for="pord">Passord</label><input type="password" name="pord" id="pord" /></p>
     <p><input type="submit" name="knapp" value="Logg inn" onClick="return valider_alle()" /></p>
 </form>
 <?php }
