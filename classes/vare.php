@@ -57,7 +57,7 @@ class Vare
 
     function setBilde($bilde)
     {
-        if(!preg_match("/^[0-9a-zæøå \/\_\.]*$/i", $bilde))
+        if(!preg_match("/^[0-9a-zæøå \/\_\.-]*$/i", $bilde))
             return "Ulovlige tegn i filbane til bilde.";
         $this->Bilde = $bilde;
     }
