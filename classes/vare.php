@@ -2,23 +2,13 @@
 
 <?php
 
-class Vare
+class Vare extends BasicVare
 {
-    private $VNr, $Varenavn, $Pris, $Beskrivelse, $Bilde, $KatNr, $Antall;
-
     /**
      * Konstruktør for å legge til vare og hente ut info om vare med gitt varenummer.
      *
      */
-    function nyVare()
-    {
-        $varenavn=  $this->Varenavn;
-        $pris=  $this->Pris;
-        $beskrivelse=  $this->Beskrivelse;
-        $bilde=  $this->Bilde;
-        $katNr=  $this->KatNr;
-        $antall=  $this->Antall;
-    }
+    
     function  __construct($VNr = false)
     {
         if($Vnr) //henter ut info om varen
@@ -40,53 +30,15 @@ class Vare
         }
     }
 
-    function setVarenavn($navn)
+    function nyVare()
     {
-        //kobler til databasen og legger inn $navn
-        $this->Varenavn = $navn;
+        $varenavn=  $this->Varenavn;
+        $pris=  $this->Pris;
+        $beskrivelse=  $this->Beskrivelse;
+        $bilde=  $this->Bilde;
+        $katNr=  $this->KatNr;
+        $antall=  $this->Antall;
     }
-
-    function setPris($pris)
-    {
-        //kobler til databasen og legger inn $pris
-        $this->Pris = $pris;
-    }
-
-    function setBeskrivelse($beskrivelse)
-    {
-        //kobler til databasen og legger inn $beskrivelse
-        $this->Beskrivelse = $beskrivelse;
-    }
-
-    function setBilde($bilde)
-    {
-        //kobler til databasen og legger inn $bilde
-        $this->Bilde = $bilde;
-    }
-
-    function setKatNr($katnr)
-    {
-        //kobler til databasen og legger inn $katnr
-        $this->KatNr = $katnr;
-    }
-
-    function setAntall($antall)
-    {
-        //kobler til databasen og legger inn $antall
-        $this->Antall = $antall;
-    }
-
-    /**
-     * Get-metoder for å hente ut parametere til vare.
-     *
-     */
-    function getVNr() {return $this->VNr;}
-    function getVarenavn() {return $this->Varenavn;}
-    function getPris() {return $this->Pris;}
-    function getBeskrivelse() {return $this->Beskrivelse;}
-    function getBilde() {return $this->Bilde;}
-    function getKatNr() {return $this->KatNr;}
-    function getAntall() {return $this->Antall;}
 
 }
 ?>
