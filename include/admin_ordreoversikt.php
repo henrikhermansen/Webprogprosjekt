@@ -43,6 +43,5 @@ echo "<tr><td></td><td></td><td></td><td></td><td><strong>TOTALT:</strong></td><
 </table>
 <p>
     <a href="index.php?side=admin_ordre">Tilbake til ordre</a>&nbsp;&nbsp;&nbsp;
-    <!--<a href="index.php?side=slettordre&amp;o=<?php echo $ordre->getOrdreNr(); ?>">Slett ordre</a>-->
-    <a hrev="javascript:bekreftSletting('index.php?side=slettordre&amp;o=<?php echo $ordre->getOrdreNr(); ?>')">Slett ordre</a>
+    <a href="javascript:bekreftSletting('index.php?side=slettordre&amp;o=<?php echo $ordre->getOrdreNr(); ?>')">Slett ordre</a>
 </p>

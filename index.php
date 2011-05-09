@@ -56,7 +56,7 @@ if($_REQUEST['tomkurv']==true)
 <?php if($side=="nykunde" || $side=="glemtpassord" || ($side=="minkonto" && ($_REQUEST['kontoside']=="endrekonto" || $_REQUEST['kontoside']=="endrepassord"))) echo"<script type=\"text/javascript\" src=\"js/kundeFeltValidering.js\"></script>"; ?>
 <?php if($side=="kontakt") echo"<script type=\"text/javascript\" src=\"js/kontaktValidering.js\"></script>"; ?>
 <?php if($side=="admlogginn") echo"<script type=\"text/javascript\" src=\"js/admloginValidering.js\"></script>"; ?>
-<?php if($side=="admin_ordreoversikt" || $side=="admin_kunder") echo"<script type=\"text/javascript\" src=\"js/bekreftSletting.js\"></script>"; ?>
+<?php if($side=="admin_ordreoversikt" || $side=="admin_kunder"  || $side=="admin_endrevare") echo"<script type=\"text/javascript\" src=\"js/bekreftSletting.js\"></script>"; ?>
 </head>
 <body>
 

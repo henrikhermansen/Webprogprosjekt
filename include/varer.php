@@ -27,7 +27,7 @@ if(isset($_POST["leggtilhandlekurv"]))
 
 $vareliste = getVarer($kategori);
 
-if(count($vareliste) == 0)
+if(!$vareliste)
     echo "<p>Det finnes ingen varer i denne kategorien.</p>";
 else
     foreach ($vareliste as $varer)
@@ -38,6 +38,7 @@ else
         $beskrivelse_substring = substr($varer[3], 0, 240);
         $beskrivelse = str_replace("<br/>", " ", $beskrivelse_substring);
         $pris = (number_format($varer[4],2,',','.'));
+        $antall=$varer[5];
 
         if(!is_file($bildeurl))
            $bildeurl = "images/noimage.gif";
@@ -46,7 +47,7 @@ else
                 <h3><a href='index.php?side=vareinfo&amp;vnr=".$vnr."'>$varenavn</a></h3>
                 <p>$beskrivelse...</p>
                 </div>
-                <div class='pris'><p><b>$pris</b></p><br/>
+                <div class='pris'><p><b>$pris</b><br/>På lager: $antall</p>
                 <form class='leggtilvare' action='' method='post' >
                     <input type='hidden' name='vnr' value='$vnr' >
                     <input type='text' name='antall' value=1 maxlength=4 />

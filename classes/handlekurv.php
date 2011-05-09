@@ -49,7 +49,7 @@ class Handlekurv
 		}
 		$return.="<li>Totalt: ".number_format($totalsum,0,",",".").",-</li>\n";
 		$return.="</ul>\n";
-		$return.="<p><a href=\"index.php?".$_SERVER['QUERY_STRING']."&amp;tomkurv=true\">Tøm handlevognen</a> <br/> <a href=\"index.php?side=kassen\">Gå til kassen</a></p>";
+		$return.="<p><a href=\"index.php?".$_SERVER['QUERY_STRING']."&amp;tomkurv=true\">Tøm handlekurven</a> <br/> <a href=\"index.php?side=kassen\">Gå til kassen</a></p>";
 		return $return;
 	}
 	

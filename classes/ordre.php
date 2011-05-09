@@ -34,19 +34,14 @@ class Ordre
     function getOrdreNr() {return $this->OrdreNr;}
     function getKNr() {return $this->KNr;}
     function getOrdreDato() {return $this->OrdreDato;}
+    function getOrdrelinjer() { return $this->ordrelinjer; }
 
     function getOrdretotal()
     {
-        $db = new sql();
-        $resultat = $db->query("SELECT SUM(webprosjekt_ordrelinje.Antall*Pris) AS 'total'
-                                FROM webprosjekt_ordrelinje INNER JOIN webprosjekt_Vare ON webprosjekt_ordrelinje.VNr = webprosjekt_Vare.VNr
-                                GROUP BY OrdreNr HAVING OrdreNr = '$this->OrdreNr';");
-        $rader = $db->affected_rows;
-        $db->close();
-        if($rader != 1)
-            return -1;
-        $resultat = $resultat->fetch_assoc();
-        return $resultat['total'];
+        $total=0;
+        foreach($this->ordrelinjer as $ordrelinje)
+				$total+=$ordrelinje[2]*$ordrelinje[3];
+		  return $total;
     }
 
     private function setOrdrelinjerFraDb()
@@ -66,8 +61,6 @@ class Ordre
         }
         return $returarray;
     }
-    
-    function getOrdrelinjer() { return $this->ordrelinjer; }
 
     function slettOrdre()
     {
@@ -80,16 +73,16 @@ class Ordre
             die("Feil - finner ikke ordre i databasen (005)");
         $db->close();
     }
-    
+
     function setOrdrelinjer($ordrelinjer)	{ $this->ordrelinjer=$ordrelinjer; }
-	 
+
 	 function setOrdrelinje($vnr,$antall)
 	 {
 	 	$ordrelinjer=$this->ordrelinjer;
 	 	$ordrelinjer[$vnr]+=$antall;
 	 	$this->ordrelinjer=$ordrelinjer;
 	 }
-	 
+
 	 function lagreOrdre()
 	 {
 		$db = new sql();
@@ -106,6 +99,9 @@ class Ordre
 		foreach($this->ordrelinjer as $VNr=>$antall)
 		{
 			$resultat=$db->query("INSERT INTO webprosjekt_ordrelinje(OrdreNr,VNr,Antall) VALUES('$ordreNr','$VNr','$antall')");
+			if(!$resultat || $db->affected_rows==0)
+			   $ok=false;
+			$resultat=$db->query("UPDATE webprosjekt_vare SET Antall=(Antall-$antall) WHERE VNr='$VNr'");
 			if(!$resultat || $db->affected_rows==0)
 			   $ok=false;
 		}
