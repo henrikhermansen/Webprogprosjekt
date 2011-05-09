@@ -2,9 +2,9 @@
 
 <?php
 
-function renStreng($streng,$mysqliObject)
+function renStreng($streng,$mysqliObject,$allowed_tags="")
 {
-	return trim($mysqliObject->real_escape_string(strip_tags($streng)));
+	return trim($mysqliObject->real_escape_string(strip_tags($streng,$allowed_tags)));
 }
 
 ?>
