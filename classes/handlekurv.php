@@ -63,6 +63,8 @@ class Handlekurv
 		return $returarray;
 	}
 	
+	function getBasicHandlekurv()	{ return $this->handlekurv; }
+	
 	function tomHandlekurv()		{ $this->handlekurv=array();$this->varenavn=array();$this->oppdater(); }
 	
 	private function oppdater()   { $_SESSION['handlekurv']=serialize($this); }

@@ -2,7 +2,7 @@
 
 class Ordre
 {
-    private $OrdreNr, $KNr, $OrdreDato;
+    private $OrdreNr, $KNr, $OrdreDato, $ordrelinjer;
 
     // Må kalle new Ordre($OrdreNr) for å hente eksisterende ordre
     // eller new Ordre(false,$KNr) for å opprette ny ordre.
@@ -11,6 +11,7 @@ class Ordre
         if(!$KNr) //Henter frem eksisterende ordre
         {
             $db = new sql();
+            $OrdreNr=renStreng($OrdreNr,$db);
             $resultat = $db->query("SELECT * FROM webprosjekt_ordre WHERE OrdreNr = '$OrdreNr';");
             $rader = $db->affected_rows;
             $db->close();
@@ -20,17 +21,12 @@ class Ordre
             $this->OrdreNr = $resultat['OrdreNr'];
             $this->KNr = $resultat['KNr'];
             $this->OrdreDato = $resultat['OrdreDato'];
+            $this->ordrelinjer=$this->setOrdrelinjerFraDb();
         }
         else //Oppretter ny ordre
         {
             $db = new sql();
-            $now = now();
-            $resultat = $db->query("INSERT INTO webprosjekt_ordre(KNr, OrdreDato) VALUES('$KNr','$now()')");
-            if($db->affected_rows == 0)
-                die("Feil - kunne ikke sette inn ordre i databasen (003)");
-            $this->OrdreNr = $db->insert_id;
-            $this->KNr = $KNr;
-            $this->OrdreDato = $now;
+            $this->KNr=renStreng($KNr,$db);
             $db->close();
         }
     }
@@ -53,7 +49,7 @@ class Ordre
         return $resultat['total'];
     }
 
-    function getOrdrelinjer()
+    private function setOrdrelinjerFraDb()
     {
         $db = new sql();
         $resultat = $db->query("SELECT webprosjekt_vare.VNr, Varenavn, Pris, webprosjekt_ordrelinje.Antall, Pris*webprosjekt_ordrelinje.Antall AS Total
@@ -70,6 +66,8 @@ class Ordre
         }
         return $returarray;
     }
+    
+    function getOrdrelinjer() { return $this->ordrelinjer; }
 
     function slettOrdre()
     {
@@ -82,5 +80,44 @@ class Ordre
             die("Feil - finner ikke ordre i databasen (005)");
         $db->close();
     }
+    
+    function setOrdrelinjer($ordrelinjer)	{ $this->ordrelinjer=$ordrelinjer; }
+	 
+	 function setOrdrelinje($vnr,$antall)
+	 {
+	 	$ordrelinjer=$this->ordrelinjer;
+	 	$ordrelinjer[$vnr]+=$antall;
+	 	$this->ordrelinjer=$ordrelinjer;
+	 }
+	 
+	 function lagreOrdre()
+	 {
+		$db = new sql();
+		$KNr=$this->KNr;
+		$ok=true;
+		$db->query("START TRANSACTION");
+		$now=now();
+		$resultat = $db->query("INSERT INTO webprosjekt_ordre(KNr, OrdreDato) VALUES('$KNr','$now')");
+		if($db->affected_rows == 0)
+			$ok=false;
+		$ordreNr = $db->insert_id;
+		$this->OrdreNr=$ordreNr;
+		$this->OrdreDato = $now;
+		foreach($this->ordrelinjer as $VNr=>$antall)
+		{
+			$resultat=$db->query("INSERT INTO webprosjekt_ordrelinje(OrdreNr,VNr,Antall) VALUES('$ordreNr','$VNr','$antall')");
+			if(!$resultat || $db->affected_rows==0)
+			   $ok=false;
+		}
+		if(!$ok)
+		{
+		   $db->query("ROLLBACK");
+		   $db->close();
+			return false;
+		}
+		$db->query("COMMIT");
+		$db->close();
+		return true;
+	 }
 }
 ?>
