@@ -102,7 +102,7 @@ class Vare
         $db=new sql();
         $error['varenavn']=$this->setVarenavn(renStreng($varenavn,$db));
         $error['pris']=$this->setPris(renStreng($pris,$db));
-        $error['beskrivelse']=$this->setBeskrivelse(renStreng(nl2br($beskrivelse),$db,"<br/>"));
+        $error['beskrivelse']=$this->setBeskrivelse(renStreng(nl2br($beskrivelse),$db,"<br>"));
         $error['bilde']=$this->setBilde(renStreng($bilde,$db));
         $error['katnr']=$this->setKatNr(renStreng($katNr,$db));
         $error['antall']=$this->setAntall(renStreng($antall,$db));
