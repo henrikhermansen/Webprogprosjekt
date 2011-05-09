@@ -5,12 +5,12 @@
     <?php
         if($_POST['legg_til']=="Legg til vare")
         {
-            if($_POST['filstreng'] != "")
+            if($_FILES['filstreng']['name'] != "")
             {
-                $temp_fil=$_FILES["filstreng"]["tmp_name"];
-                $filnavn=$_FILES["filstreng"]["name"];
-                $helt_filnavn="images/varebilde/".$filnavn;
-                move_uploaded_file($temp_fil, $helt_filnavn);
+                $temp_fil = $_FILES["filstreng"]["tmp_name"];
+                $filnavn = $_FILES["filstreng"]["name"];
+                $helt_filnavn="images/varebilder/".$filnavn;
+                $ok = move_uploaded_file($temp_fil, $helt_filnavn);
             }
             else
                 $helt_filnavn = "";
@@ -27,7 +27,7 @@
         }
     
    
-    if(!isset($_POST['nyvare']) || $error)
+    if(!isset($_POST['legg_til']) || $error)
     {?>
 
 <form action="" method="post" name="ny_vare" enctype="multipart/form-data" >

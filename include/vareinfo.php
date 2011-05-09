@@ -19,7 +19,7 @@ if(isset($_POST["leggtilhandlekurv"]))
 
 //Skriver ut vareinfo
 echo "<h2>".$Varenavn."</h2>";
-echo "<img src='$Bilde' alt='$Varenavn' width='200' height='200' class='vareinfobilde' />";
+echo "<img src='$Bilde' alt='$Varenavn' width='200' class='vareinfobilde' />";
 echo $Beskrivelse;
 echo "<div class='vareinfopris'><br/><b>Pris: ".number_format($Pris,2,',','.')."</b><br/><br/>";
 echo "Varenummer:  ".$vnr."<br/>";

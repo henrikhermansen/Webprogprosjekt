@@ -37,12 +37,13 @@ else
         $varenavn = substr($varer[2], 0, 50);
         $beskrivelse_substring = substr($varer[3], 0, 240);
         $beskrivelse = str_replace("<br/>", " ", $beskrivelse_substring);
+        $beskrivelse = str_replace("<br />", " ", $beskrivelse);
         $pris = (number_format($varer[4],2,',','.'));
         $antall=$varer[5];
 
         if(!is_file($bildeurl))
            $bildeurl = "images/noimage.gif";
-        echo "<div class='varebilde'><img src='$bildeurl' alt='$varenavn' height='100' /></div>
+        echo "<div class='varebilde'><img src='$bildeurl' alt='$varenavn' width='100' /></div>
                 <div class='varetekst'>
                 <h3><a href='index.php?side=vareinfo&amp;vnr=".$vnr."'>$varenavn</a></h3>
                 <p>$beskrivelse...</p>

@@ -57,7 +57,7 @@ class Vare
 
     function setBilde($bilde)
     {
-        if(!preg_match("/^[0-9a-zזרו\/\_\.]*$/", $bilde))
+        if(!preg_match("/^[0-9a-zזרו \/\_\.]*$/i", $bilde))
             return "Ulovlige tegn i filbane til bilde.";
         $this->Bilde = $bilde;
     }
@@ -127,6 +127,7 @@ class Vare
         if($db->affected_rows<0)
            return"<p class=\"feilmelding\">Databasefeil ved oppretting av ny vare (H04).</p>";
         $db->close();
+        return "<p class=\"okmelding\">Vare lagt til.</p>";
     }
 
     function endreVare()
