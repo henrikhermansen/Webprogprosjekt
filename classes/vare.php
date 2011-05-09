@@ -145,7 +145,7 @@ class Vare
         if(!$resultat)
            return"<p class=\"feilmelding\">Ingen endringer registrert. (H01)</p>";
         if($db->affected_rows<0)
-           return"<p class=\"feilmelding\">Databasefeil ved endring av varem(H02).</p>";
+           return"<p class=\"feilmelding\">Databasefeil ved endring av vare. (H02)</p>";
         $db->close();
         return "<p class=\"okmelding\">Vare endret.</p>";
     }
