@@ -53,7 +53,6 @@ class Vare
             return "Skriv noe i varebeskrivelsen.";
 
         $this->Beskrivelse = $beskrivelse;
-        return $beskrivelse;
     }
 
     function setBilde($bilde)

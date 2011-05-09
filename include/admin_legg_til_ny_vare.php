@@ -54,7 +54,7 @@
         <p class="feilmelding"><?php echo $feilmeldinger['antall']; ?></p>
         <p>Beskrivelse<br/><textarea cols="40" rows="10" name="beskrivelse"><?php echo $_POST['beskrivelse'] ?></textarea></p>
         <p class="feilmelding"><?php echo $feilmeldinger['beskrivelse']; ?></p>
-        <p><label>Legg til bilde</label><input type="file" size="20" name="filstreng" value="<?php echo $_POST['filstreng'] ?>"/></p>
+        <p><label>Legg til bilde</label><input type="file" size="20" name="filstreng" /></p>
         <p class="feilmelding"><?php echo $feilmeldinger['bilde']; ?></p>
         <p><input type="submit" name="legg_til" value="Legg til vare"</p>
 
