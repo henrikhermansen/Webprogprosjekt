@@ -33,7 +33,7 @@ else
         echo "<td>$kundelinje[4] ".  sjekkPostnr($kundelinje[4])."</td>";
         echo "<td>$kundelinje[5]</td>";
         echo "<td>$kundelinje[6]</td>";
-        echo "<td><a href='index.php?side=slettkunde&amp;knr=$kundelinje[0]'>Slett</a><td>";
+        echo "<td><a href=\"javascript:bekreftSletting('index.php?side=slettkunde&amp;knr=$kundelinje[0]')\"s>Slett</a><td>";
         echo "</tr>";
     }
     echo "</table>";
