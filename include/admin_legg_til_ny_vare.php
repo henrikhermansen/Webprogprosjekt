@@ -41,7 +41,7 @@
     if(!isset($_POST['legg_til']) || $error)
     {?>
 
-<form action="" method="post" name="ny_vare" enctype="multipart/form-data" onSubmit="return validerAlle()" >
+<form action="" method="post" name="ny_vare" enctype="multipart/form-data" onSubmit="return validerAlle()">
     <?php
         $db = new sql();
 	$resultat = $db->query("SELECT * FROM webprosjekt_kategori;");

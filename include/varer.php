@@ -34,7 +34,7 @@ else
     {
         $bildeurl = $varer[0];
         $vnr = $varer[1];
-        $varenavn = substr($varer[2], 0, 50);
+        $varenavn = substr($varer[2], 0, 45);
         $beskrivelse_substring = substr($varer[3], 0, 240);
         $beskrivelse = str_replace("<br/>", " ", $beskrivelse_substring);
         $beskrivelse = str_replace("<br />", " ", $beskrivelse);
