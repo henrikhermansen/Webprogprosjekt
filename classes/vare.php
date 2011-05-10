@@ -141,7 +141,7 @@ class Vare
         $antall=  $this->Antall;
 
         $db=new sql();
-        $resultat=$db->query("UPDATE webprosjekt_vare SET Varenavn='$varenavn', Pris='$pris', Beskrivelse='$beskrivelse', Bilde='$bilde',KatNr='$katNr', Antall='$antall' WHERE VNr='$vnr';");
+        $resultat=$db->query("UPDATE webprosjekt_vare SET Varenavn='$varenavn', Pris='$pris', Beskrivelse='$beskrivelse', Bilde='$bilde',KatNr='$katNr', Antall='$antall' WHERE VNr='$vnr'");
         if(!$resultat)
            return"<p class=\"feilmelding\">Ingen endringer registrert. (H01)</p>";
         if($db->affected_rows<0)
@@ -149,5 +149,16 @@ class Vare
         $db->close();
         return "<p class=\"okmelding\">Vare endret.</p>";
     }
+    
+	function slettVare()
+	{
+		$db=new sql();
+		$vnr=$this->VNr;
+		$resultat=$db->query("DELETE FROM webprosjekt_vare WHERE VNr='$vnr'");
+		if(!$resultat || $db->affected_rows<1)
+		   return"<p class=\"feilmelding\">Kan ikke slette: varen finnes i en eller flere ordre.</p>";
+		$db->close();
+		return"<p class=\"okmelding\">Vare slettet.</p>";
+	}
 }
 ?>

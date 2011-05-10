@@ -47,8 +47,10 @@ if($_POST['legg_til']=="Endre vare")
         echo $vare->endreVare();
 }
 
+if($_GET['slett']=="true")
+	echo $vare->slettVare();
 
-if(!isset($_POST['legg_til']) || $error)
+if((!isset($_POST['legg_til']) || $error) && $_GET['slett']!="true")
 {
 
 if(is_file($vare->getBilde()))
@@ -92,7 +94,7 @@ else
         <p><label>Legg til/erstatt bilde</label><input type="file" size="20" name="filstreng" /></p>
         <p class="feilmelding" style="display:<?php echo $feilmeldinger['bilde']==null?"none":"block";?>"><?php echo $feilmeldinger['bilde']; ?></p>
 
-        <p><input type="submit" name="legg_til" value="Endre vare"/></p>
+        <p><input type="submit" name="legg_til" value="Endre vare"/> <input type="button" value="Slett vare" onClick="bekreftSletting('index.php?side=admin_endrevare&amp;vnr=<?php echo $vnr; ?>&amp;slett=true')"></p>
 
 </form>
 <?php } ?>
