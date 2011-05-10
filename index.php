@@ -2,7 +2,8 @@
 
 session_start();
 
-ERROR_REPORTING(E_ALL ^ E_NOTICE);
+//ERROR_REPORTING(E_ALL ^ E_NOTICE);   // Brukes kun ved utvikling.
+ERROR_REPORTING(0);                    // Brukes når nettbutikken er online for kunder.
 
 date_default_timezone_set('Europe/Oslo');
 $gjennomIndex=true;
