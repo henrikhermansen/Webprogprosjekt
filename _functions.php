@@ -2,6 +2,7 @@
 
 <?php
 
+require_once"functions/error_handling.php";
 require_once"functions/cryptPass.php";
 require_once"functions/fixSpecialChars.php";
 require_once"functions/genPassord.php";

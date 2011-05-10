@@ -13,6 +13,8 @@ $require_login=array("","minkonto","kassen"); // Sider som kun skal kunne vises 
 $require_admin=array("","admin_kunder","admin_legg_til_ny_vare","admin_ordre","admin_ordreoversikt","admin_varer","admin_endreordre","admin_kategorier","admin_endrevare","slettordre","slettkunde"); // Sider som kun skal kunne vises til innloggede administratorer
 
 require_once"_functions.php";
+register_shutdown_function('shutdown');
+
 require_once"_classes.php";
 
 if(isset($_SESSION['kunde']) && $side!="loggut")   // Innlogget kunde
