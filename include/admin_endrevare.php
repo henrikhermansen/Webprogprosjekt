@@ -79,19 +79,19 @@ else
 	<?php $db->close(); ?>
         <p class="feilmelding" style="display:<?php echo $feilmeldinger['katnr']==null?"none":"block";?>"><?php echo $feilmeldinger['katnr']; ?></p>
 
-        <p><label>Varenavn</label><input type="text" name="varenavn" value="<?php echo $vare->getVarenavn(); ?>" onKeyUp="validerVarenavn()"/></p>
+        <p><label for="varenavn">Varenavn</label><input type="text" id="varenavn" name="varenavn" value="<?php echo $vare->getVarenavn(); ?>" onKeyUp="validerVarenavn()"/></p>
         <p id="feilVarenavn" class="feilmelding" style="display:<?php echo $feilmeldinger['varenavn']==null?"none":"block";?>"><?php echo $feilmeldinger['varenavn']; ?></p>
 
-        <p><label>Pris</label><input type="text" name="pris" value="<?php echo $vare->getPris(); ?>" onKeyUp="validerPris()"/></p>
+        <p><label for="pris">Pris</label><input type="text" id="pris" name="pris" value="<?php echo $vare->getPris(); ?>" onKeyUp="validerPris()"/></p>
         <p id="feilPris" class="feilmelding" style="display:<?php echo $feilmeldinger['pris']==null?"none":"block";?>"><?php echo $feilmeldinger['pris']; ?></p>
 
-        <p><label>Antall varer</label><input type="text" name="antall" value="<?php echo $vare->getAntall(); ?>" onKeyUp="validerAntall()"/></p>
+        <p><label for="antall">Antall varer</label><input type="text" id="antall" name="antall" value="<?php echo $vare->getAntall(); ?>" onKeyUp="validerAntall()"/></p>
         <p id="feilAntall" class="feilmelding" style="display:<?php echo $feilmeldinger['antall']==null?"none":"block";?>"><?php echo $feilmeldinger['antall']; ?></p>
 
         <p>Beskrivelse<br/><textarea cols="40" rows="10" name="beskrivelse" onKeyUp="validerBeskrivelse()"><?php echo strip_tags($vare->getBeskrivelse()); ?></textarea></p>
         <p id="feilBeskrivelse" class="feilmelding" style="display:<?php echo $feilmeldinger['beskrivelse']==null?"none":"block";?>"><?php echo $feilmeldinger['beskrivelse']; ?></p>
 
-        <p><label>Legg til/erstatt bilde</label><input type="file" size="20" name="filstreng" /></p>
+        <p><label for="filstreng">Legg til/erstatt bilde</label><input type="file" size="20" id="filstreng" name="filstreng" /></p>
         <p class="feilmelding" style="display:<?php echo $feilmeldinger['bilde']==null?"none":"block";?>"><?php echo $feilmeldinger['bilde']; ?></p>
 
         <p><input type="submit" name="legg_til" value="Endre vare"/> <input type="button" value="Slett vare" onClick="bekreftSletting('index.php?side=admin_endrevare&amp;vnr=<?php echo $vnr; ?>&amp;slett=true')"></p>

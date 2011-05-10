@@ -15,7 +15,7 @@ class Vare
         if($VNr != false)
         {
             $db = new sql();
-            $resultat = $db->query("SELECT * FROM webprosjekt_vare WHERE VNr = '$VNr';");
+            $resultat = $db->query("SELECT * FROM webprosjekt_vare WHERE VNr = '$VNr'");
             $rader = $db->affected_rows;
             $db->close();
             if($rader == 0)
@@ -65,7 +65,7 @@ class Vare
     function setKatNr($katnr)
     {
         $db = new sql();
-        $resultat = $db->query("SELECT * FROM webprosjekt_kategori WHERE KatNr = '$katnr';");
+        $resultat = $db->query("SELECT * FROM webprosjekt_kategori WHERE KatNr = '$katnr'");
         $rader = $db->affected_rows;
         $db->close();
         if(!$resultat)
@@ -77,7 +77,6 @@ class Vare
 
     function setAntall($antall)
     {
-        //kobler til databasen og legger inn $antall
         if(!preg_match("/^[0-9]+$/", $antall))
             return "Antall kan kun inneholde tall 0-9.";
 
@@ -120,7 +119,7 @@ class Vare
 
         $db=new sql();
         $resultat = $db->query("INSERT INTO webprosjekt_vare (Varenavn,Pris,Beskrivelse,Bilde,KatNr,Antall)
-                              VALUES('$varenavn','$pris','$beskrivelse','$bilde','$katNr','$antall');");
+                              VALUES('$varenavn','$pris','$beskrivelse','$bilde','$katNr','$antall')");
         if(!$resultat)
            return"<p class=\"feilmelding\">Databasefeil ved oppretting av ny vare (H03).</p>";
         $this->VNr=$db->insert_id;

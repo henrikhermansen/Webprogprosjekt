@@ -118,7 +118,7 @@ class Kunde extends BasicKunde
 	function getAlleOrdre()
 	{
 		$db = new sql();
-		$resultat = $db->query("SELECT OrdreNr FROM webprosjekt_ordre WHERE KNr = '$this->KNr' ORDER BY OrdreDato DESC;");
+		$resultat = $db->query("SELECT OrdreNr FROM webprosjekt_ordre WHERE KNr = '$this->KNr' ORDER BY OrdreDato DESC");
 		$rader = $db->affected_rows;
 		$db->close();
 		$ordrenummer;

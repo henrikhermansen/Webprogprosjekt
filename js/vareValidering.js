@@ -1,9 +1,3 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 function validerVarenavn()
 {
     regEx = /^[a-zזרו0-9 .,:;\-\_\+\(\)\/\&\\\ ]{2,100}$/i;

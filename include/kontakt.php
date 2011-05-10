@@ -1,3 +1,5 @@
+<?php if(!$gjennomIndex) die("Access denied.");?>
+
 <h2>Kontakt oss</h2>
 
 <h3>Postadresse:</h3>

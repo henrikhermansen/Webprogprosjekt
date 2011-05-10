@@ -1,3 +1,5 @@
+<?php if(!$gjennomIndex) die("Access denied.");?>
+
 <h2>Velkommen til HBHL nettbutikk!</h2>
 
 <p>Vi fører alt av digitalt fotoutstyr fra alle de store kvalitetsprodusentene.

@@ -1,5 +1,5 @@
-<?php
-if(!$gjennomIndex) die("Access denied.");
+<?php if(!$gjennomIndex) die("Access denied.");
+
 $vnr = $_REQUEST['vnr'];
 
 //Henter ut info om vare

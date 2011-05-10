@@ -1,3 +1,5 @@
+<?php if(!$gjennomIndex) die("Access denied.");?>
+
 <h2>Logg inn som administrator</h2>
 <div id="feilmelding"></div>
 <?php

@@ -45,7 +45,7 @@ class Kategori
 			return "<p class=\"feilmelding\">Kategorinavn kan kun inneholde bokstaver, tall, mellomrom, og (.,:;-+/\&), og må være mellom 2-30 tegn.</p>";
 		$this->katnavn=$katnavn;
 
-		$resultat = $db->query("INSERT INTO webprosjekt_kategori (Navn) VALUES('$katnavn');");
+		$resultat = $db->query("INSERT INTO webprosjekt_kategori (Navn) VALUES('$katnavn')");
 		if(!$resultat)
 			return"<p class=\"feilmelding\">Databasefeil ved oppretting av ny kategori (H03).</p>";
 		if($db->affected_rows<1)

@@ -49,7 +49,7 @@ class Ordre
         $db = new sql();
         $resultat = $db->query("SELECT webprosjekt_vare.VNr, Varenavn, Pris, webprosjekt_ordrelinje.Antall, Pris*webprosjekt_ordrelinje.Antall AS Total
                                 FROM webprosjekt_vare INNER JOIN webprosjekt_ordrelinje ON webprosjekt_vare.VNr = webprosjekt_ordrelinje.VNr
-                                WHERE OrdreNr = '$this->OrdreNr';");
+                                WHERE OrdreNr = '$this->OrdreNr'");
         if(!$resultat)
             die("Feil - finner ikke ordre i databasen (003)");
         $db->close();
@@ -65,10 +65,10 @@ class Ordre
     function slettOrdre()
     {
         $db = new sql();
-        $resultat = $db->query("DELETE FROM webprosjekt_ordrelinje WHERE OrdreNr = '$this->OrdreNr';");
+        $resultat = $db->query("DELETE FROM webprosjekt_ordrelinje WHERE OrdreNr = '$this->OrdreNr'");
         if($db->affected_rows == 0)
             die("Feil - finner ikke ordre i databasen (004)");
-        $resultat = $db->query("DELETE FROM webprosjekt_ordre WHERE OrdreNr = '$this->OrdreNr';");
+        $resultat = $db->query("DELETE FROM webprosjekt_ordre WHERE OrdreNr = '$this->OrdreNr'");
         if($db->affected_rows == 0)
             die("Feil - finner ikke ordre i databasen (005)");
         $db->close();
