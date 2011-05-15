@@ -2,7 +2,7 @@
 
 class Ordre
 {
-    private $OrdreNr, $KNr, $OrdreDato, $ordrelinjer;
+    private $OrdreNr, $KNr, $OrdreDato, $ordrelinjer, $kundenavn, $fraktsum;
 
     // Må kalle new Ordre($OrdreNr) for å hente eksisterende ordre
     // eller new Ordre(false,$KNr) for å opprette ny ordre.
@@ -12,7 +12,7 @@ class Ordre
         {
             $db = new sql();
             $OrdreNr=renStreng($OrdreNr,$db);
-            $resultat = $db->query("SELECT * FROM webprosjekt_ordre WHERE OrdreNr = '$OrdreNr';");
+            $resultat = $db->query("SELECT * FROM webprosjekt_ordre INNER JOIN (SELECT KNr, Fornavn, Etternavn FROM webprosjekt_kunde) AS kunde ON webprosjekt_ordre.KNr=kunde.KNr WHERE OrdreNr = '$OrdreNr';");
             $rader = $db->affected_rows;
             $db->close();
             if($rader == 0)
@@ -20,21 +20,26 @@ class Ordre
             $resultat = $resultat->fetch_assoc();
             $this->OrdreNr = $resultat['OrdreNr'];
             $this->KNr = $resultat['KNr'];
+            $this->kundenavn = $resultat['Fornavn']." ".$resultat['Etternavn'];
             $this->OrdreDato = $resultat['OrdreDato'];
             $this->ordrelinjer=$this->setOrdrelinjerFraDb();
+            $this->fraktsum = $resultat['Frakt'];
         }
         else //Oppretter ny ordre
         {
             $db = new sql();
             $this->KNr=renStreng($KNr,$db);
             $db->close();
+            $fraktsum=0;
         }
     }
 
     function getOrdreNr() {return $this->OrdreNr;}
     function getKNr() {return $this->KNr;}
+    function getKundenavn() {return $this->kundenavn;}
     function getOrdreDato() {return $this->OrdreDato;}
     function getOrdrelinjer() { return $this->ordrelinjer; }
+    function getFraktsum() {return $this->fraktsum;}
 
     function getOrdretotal()
     {
@@ -82,15 +87,34 @@ class Ordre
 	 	$ordrelinjer[$vnr]+=$antall;
 	 	$this->ordrelinjer=$ordrelinjer;
 	 }
+	 
+	 function setFrakt($fraktmetode)
+	 {
+		switch($fraktmetode)
+		{
+			case"hentselv":
+			   $this->fraktsum=0;
+      		return true;
+			case"servicepakke":
+			   $this->fraktsum=120;
+      		return true;
+			case"dortildor":
+			   $this->fraktsum=240;
+			   return true;
+			default:
+			   return false;
+		}
+	 }
 
 	 function lagreOrdre()
 	 {
 		$db = new sql();
 		$KNr=$this->KNr;
+		$fraktsum=$this->fraktsum;
 		$ok=true;
 		$db->query("START TRANSACTION");
 		$now=now();
-		$resultat = $db->query("INSERT INTO webprosjekt_ordre(KNr, OrdreDato) VALUES('$KNr','$now')");
+		$resultat = $db->query("INSERT INTO webprosjekt_ordre(KNr, OrdreDato, Frakt) VALUES('$KNr','$now','$fraktsum')");
 		if($db->affected_rows == 0)
 			$ok=false;
 		$ordreNr = $db->insert_id;

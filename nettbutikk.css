@@ -90,7 +90,7 @@ a:hover{
 table {width:100%;}
 
 form p {display:table;}
-form label {display:table-cell;width:250px;}
+form p label {display:table-cell;width:250px;}
 form span {display:table-cell;}
 form span span {display:inline;}
 form input, form select {width:200px;}

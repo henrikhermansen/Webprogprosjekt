@@ -17,13 +17,13 @@ if(count($ordrenummer) == 0)
     echo "<p>Du har ingen eksisterengde ordre.</p>";
 else
 {
-    echo "<table><tr><th>Ordrenummer</th><th>Ordredato</th><th>Ordrebeløp</th></tr>";
+    echo "<table><tr><th>Ordrenummer</th><th>Kunde</th><th>Ordredato</th><th>Ordrebeløp</th></tr>";
 
     foreach ($ordrenummer as $value)
     {
         $ordre = new Ordre($value);
         echo "<tr><td><a href='index.php?side=admin_ordreoversikt&amp;o=".$ordre->getOrdreNr()."'>".$ordre->getOrdreNr()."</td>
-                <td>".$ordre->getOrdreDato()."</td><td>".number_format($ordre->getOrdretotal(),2,',','.')."</td></tr>";
+                <td>".$ordre->getKundenavn()."</td><td>".$ordre->getOrdreDato()."</td><td>".number_format($ordre->getOrdretotal(),2,',','.')."</td></tr>";
     }
 
     echo "</table>";
