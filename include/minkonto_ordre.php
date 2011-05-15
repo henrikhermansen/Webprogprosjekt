@@ -15,7 +15,7 @@ else
     {
         $ordre = new Ordre($value);
         echo "<tr><td><a href='index.php?side=ordreoversikt&amp;o=".$ordre->getOrdreNr()."'>".$ordre->getOrdreNr()."</td>
-                <td>".$ordre->getOrdreDato()."</td><td>".number_format($ordre->getOrdretotal(),2,',','.')."</td></tr>";
+                <td>".$ordre->getOrdreDato()."</td><td>".number_format($ordre->getOrdretotal()+$ordre->getFraktsum(),2,',','.')."</td></tr>";
     }
     
     echo "</table>";
