@@ -2,8 +2,8 @@
 
 session_start();
 
-ERROR_REPORTING(E_ALL ^ E_NOTICE);   // Brukes kun ved utvikling.
-//ERROR_REPORTING(0);                    // Brukes når nettbutikken er online for kunder.
+//ERROR_REPORTING(E_ALL ^ E_NOTICE);   // Brukes kun ved utvikling.
+ERROR_REPORTING(0);                    // Brukes når nettbutikken er online for kunder.
 
 date_default_timezone_set('Europe/Oslo');
 $gjennomIndex=true;
@@ -14,7 +14,7 @@ $require_login=array("","minkonto","kassen"); // Sider som kun skal kunne vises 
 $require_admin=array("","admin_kunder","admin_legg_til_ny_vare","admin_ordre","admin_ordreoversikt","admin_varer","admin_endreordre","admin_kategorier","admin_endrevare","slettordre","slettkunde"); // Sider som kun skal kunne vises til innloggede administratorer
 
 require_once"_functions.php";
-//register_shutdown_function('shutdown');
+register_shutdown_function('shutdown');
 
 require_once"_classes.php";
 
@@ -87,9 +87,7 @@ if($_REQUEST['tomkurv']==true)
 			include "include/$side.php";
 	}
 	else
-		//include(isset($bruker)?"include/bestill.php":"include/login.php");
 		include"include/hjem.php";
-		//include"404.php";
 	?>
 </div>
 
